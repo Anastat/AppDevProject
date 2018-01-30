@@ -1,0 +1,56 @@
+Job id
+
+job status
+
+Date
+
+Deadline/due date
+
+Title
+
+Job status 
+-assigned/new job
+-in progress
+-cancelled
+-completed/done
+
+
+
+Responsible department
+-housekeeping
+-engineering and maintenance
+-front office
+-food and Beverage
+-guest service
+-other
+
+Details
+
+
+place 
+
+
+Attachment
+
+Author
+
+add a note/submit job
+
+
+History
+
+
+
+https://www.iconfinder.com (icons by Designmodo,  icons by Jackie Tran) License: Free for commercial use
+Font: Agency FB
+background: https://pixabay.com/
+font-color: RGB 252, 247, 228 (Light)
+	    RGB 103, 47, 9 (Dark)
+
+Sokos design
+Font-family: proxima-nova,Helvetica,Arial,sans-serif;
+font-size: 14px;
+font-color: F5F0EB
+	    282828
+	    195,5,5 (RED)
+	    
