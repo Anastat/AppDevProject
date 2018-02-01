@@ -1,5 +1,5 @@
 # ApplicationDevelopmentProject
 
 
-AlexLaak - Alex Laakkonen
+AlexLaak - Alex Laakkonen <br>
 Kasperit - Kasperi Tuovinen
