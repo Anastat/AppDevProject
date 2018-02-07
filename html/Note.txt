@@ -50,7 +50,7 @@ font-color: RGB 252, 247, 228 (Light)
 Sokos design
 Font-family: proxima-nova,Helvetica,Arial,sans-serif;
 font-size: 14px;
-font-color: F5F0EB
+color: F5F0EB
 	    282828
 	    195,5,5 (RED)
 	    
