@@ -47,7 +47,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         JSONObject obj = new JSONObject();
         JSONObject answer = new JSONObject();
         JSONArray arr = new JSONArray();
-        int n = 2;
+        int n = 2; // test variable
         for (Tasks result : results) {
             if (result.getTaskStatus().getStatusName().equals("New") && result.getDepartment().getDepartmentID() == n) {
                 valid.add(result);
@@ -60,6 +60,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("department", tasks.getDepartment().getDepartmentID());
             obj.put("title", tasks.getTitle());
             obj.put("place", tasks.getPlace().getPlaceID());
+            obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
             obj.put("details", tasks.getDetils());
             obj.put("attachment", tasks.getAttachment());
             arr.put(obj);          
@@ -69,43 +70,100 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         return "<p>" + arr + "</p>";
     }
 
-    public JSONObject sortByProcess(@PathParam("id") Integer id) {
+    @GET
+    @Path("sortprocess")
+    @Produces(MediaType.TEXT_HTML)
+    public String sortByProcess(@PathParam("id") Integer id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
+        JSONObject answer = new JSONObject();
+        JSONArray arr = new JSONArray();
+        int n = 2; // test variable
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("InProcess") && (result.getDepartment().getDepartmentID().intValue() == id)) {
+            if (result.getTaskStatus().getStatusName().equals("In process") && result.getDepartment().getDepartmentID() == n) {
                 valid.add(result);
             }
         }
-        obj.put("valid", valid);
-        return obj;
+        for (Tasks tasks : valid) {
+            obj.put("id", tasks.getTaskID());
+            obj.put("duedate", tasks.getDueDate());
+            obj.put("duetime", tasks.getDueTime());
+            obj.put("department", tasks.getDepartment().getDepartmentID());
+            obj.put("title", tasks.getTitle());
+            obj.put("place", tasks.getPlace().getPlaceID());
+            obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
+            obj.put("details", tasks.getDetils());
+            obj.put("attachment", tasks.getAttachment());
+            arr.put(obj);          
+            answer.put("test", obj);
+            obj = new JSONObject();           
+        }
+        return "<p>" + arr + "</p>";
     }
 
-    public JSONObject sortDone(@PathParam("id") Integer id) {
+    @GET
+    @Path("sortdone")
+    @Produces(MediaType.TEXT_HTML)
+    public String sortByDone(@PathParam("id") Integer id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
+        JSONObject answer = new JSONObject();
+        JSONArray arr = new JSONArray();
+        int n = 2; // test variable
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("Done") && (result.getDepartment().getDepartmentID().intValue() == id)) {
+            if (result.getTaskStatus().getStatusName().equals("Done") && result.getDepartment().getDepartmentID() == n) {
                 valid.add(result);
             }
         }
-        obj.put("valid", valid);
-        return obj;
+        for (Tasks tasks : valid) {
+            obj.put("id", tasks.getTaskID());
+            obj.put("duedate", tasks.getDueDate());
+            obj.put("duetime", tasks.getDueTime());
+            obj.put("department", tasks.getDepartment().getDepartmentID());
+            obj.put("title", tasks.getTitle());
+            obj.put("place", tasks.getPlace().getPlaceID());
+            obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
+            obj.put("details", tasks.getDetils());
+            obj.put("attachment", tasks.getAttachment());
+            arr.put(obj);          
+            answer.put("test", obj);
+            obj = new JSONObject();           
+        }
+        return "<p>" + arr + "</p>";
     }
 
-    public JSONObject sortByCanceled(@PathParam("id") Integer id) {
+    @GET
+    @Path("sortcancelled")
+    @Produces(MediaType.TEXT_HTML)
+    public String sortByCancelled(@PathParam("id") Integer id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
+        JSONObject answer = new JSONObject();
+        JSONArray arr = new JSONArray();
+        int n = 2; // test variable
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("Canceled") && (result.getDepartment().getDepartmentID().intValue() == id)) {
+            if (result.getTaskStatus().getStatusName().equals("Cancelled") && result.getDepartment().getDepartmentID() == n) {
                 valid.add(result);
             }
         }
-        obj.put("valid", valid);
-        return obj;
+        for (Tasks tasks : valid) {
+            obj.put("id", tasks.getTaskID());
+            obj.put("duedate", tasks.getDueDate());
+            obj.put("duetime", tasks.getDueTime());
+            obj.put("department", tasks.getDepartment().getDepartmentID());
+            obj.put("title", tasks.getTitle());
+            obj.put("place", tasks.getPlace().getPlaceID());
+            obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
+            obj.put("details", tasks.getDetils());
+            obj.put("attachment", tasks.getAttachment());
+            arr.put(obj);          
+            answer.put("test", obj);
+            obj = new JSONObject();           
+        }
+        return "<p>" + arr + "</p>";
     }
 
     @POST
