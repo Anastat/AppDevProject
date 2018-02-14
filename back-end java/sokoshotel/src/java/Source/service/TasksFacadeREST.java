@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -38,18 +39,16 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         super(Tasks.class);
     }
 
-    @GET
+    @POST
     @Path("sortnew")
-    @Produces(MediaType.TEXT_HTML)
-    public String sortByNew(@PathParam("id") Integer id) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public String sortByNew(@FormParam("id") int id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
-        JSONObject answer = new JSONObject();
         JSONArray arr = new JSONArray();
-        int n = 2; // test variable
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("New") && result.getDepartment().getDepartmentID() == n) {
+            if (result.getTaskStatus().getStatusName().equals("New") && result.getDepartment().getDepartmentID() == id) {
                 valid.add(result);
             }
         }
@@ -64,24 +63,21 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("details", tasks.getDetils());
             obj.put("attachment", tasks.getAttachment());
             arr.put(obj);          
-            answer.put("test", obj);
             obj = new JSONObject();           
         }
-        return "<p>" + arr + "</p>";
+        return arr.toString();
     }
 
-    @GET
+    @POST
     @Path("sortprocess")
-    @Produces(MediaType.TEXT_HTML)
-    public String sortByProcess(@PathParam("id") Integer id) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public String sortByProcess(@FormParam("id") Integer id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
-        JSONObject answer = new JSONObject();
         JSONArray arr = new JSONArray();
-        int n = 2; // test variable
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("In process") && result.getDepartment().getDepartmentID() == n) {
+            if (result.getTaskStatus().getStatusName().equals("In process") && result.getDepartment().getDepartmentID() == id) {
                 valid.add(result);
             }
         }
@@ -96,24 +92,21 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("details", tasks.getDetils());
             obj.put("attachment", tasks.getAttachment());
             arr.put(obj);          
-            answer.put("test", obj);
             obj = new JSONObject();           
         }
-        return "<p>" + arr + "</p>";
+        return arr.toString();
     }
 
-    @GET
+    @POST
     @Path("sortdone")
-    @Produces(MediaType.TEXT_HTML)
-    public String sortByDone(@PathParam("id") Integer id) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public String sortByDone(@FormParam("id") Integer id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
-        JSONObject answer = new JSONObject();
         JSONArray arr = new JSONArray();
-        int n = 2; // test variable
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("Done") && result.getDepartment().getDepartmentID() == n) {
+            if (result.getTaskStatus().getStatusName().equals("Done") && result.getDepartment().getDepartmentID().intValue() == id) {
                 valid.add(result);
             }
         }
@@ -128,24 +121,21 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("details", tasks.getDetils());
             obj.put("attachment", tasks.getAttachment());
             arr.put(obj);          
-            answer.put("test", obj);
             obj = new JSONObject();           
         }
-        return "<p>" + arr + "</p>";
+        return arr.toString();
     }
 
-    @GET
+    @POST
     @Path("sortcancelled")
-    @Produces(MediaType.TEXT_HTML)
-    public String sortByCancelled(@PathParam("id") Integer id) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public String sortByCancelled(@FormParam("id") Integer id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
-        JSONObject answer = new JSONObject();
         JSONArray arr = new JSONArray();
-        int n = 2; // test variable
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("Cancelled") && result.getDepartment().getDepartmentID() == n) {
+            if (result.getTaskStatus().getStatusName().equals("Cancelled") && result.getDepartment().getDepartmentID() == id) {
                 valid.add(result);
             }
         }
@@ -160,10 +150,9 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("details", tasks.getDetils());
             obj.put("attachment", tasks.getAttachment());
             arr.put(obj);          
-            answer.put("test", obj);
             obj = new JSONObject();           
         }
-        return "<p>" + arr + "</p>";
+        return arr.toString();
     }
 
     @POST
