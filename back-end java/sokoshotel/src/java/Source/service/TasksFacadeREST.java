@@ -71,7 +71,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     @POST
     @Path("sortprocess")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByProcess(@FormParam("id") Integer id) {
+    public String sortByProcess(@FormParam("id") int id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
@@ -100,13 +100,13 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     @POST
     @Path("sortdone")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByDone(@FormParam("id") Integer id) {
+    public String sortByDone(@FormParam("id") int id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("Done") && result.getDepartment().getDepartmentID().intValue() == id) {
+            if (result.getTaskStatus().getStatusName().equals("Done") && result.getDepartment().getDepartmentID() == id) {
                 valid.add(result);
             }
         }
@@ -129,7 +129,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     @POST
     @Path("sortcancelled")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByCancelled(@FormParam("id") Integer id) {
+    public String sortByCancelled(@FormParam("id") int id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();

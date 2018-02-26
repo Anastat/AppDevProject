@@ -56,9 +56,9 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
     }
 
     @POST
-    @Path("newuser")
+    @Path("login")
     @Produces(MediaType.TEXT_HTML)
-    public Response checkLogin(@FormParam("username") String name, @FormParam("password") String pw, @FormParam("name") String firstname, @FormParam("surname") String surname) throws URISyntaxException {
+    public Response checkLogin(@FormParam("username") String name, @FormParam("password") String pw) throws URISyntaxException {
         /*final Collection<Taskhistory> collection = new ArrayList<>();
         collection.add(new Taskhistory());*/
         List<Users> results = em.createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getResultList();
@@ -66,7 +66,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
             if (results.get(0).getPassword().equals(pw)) {
                 URL url;
                 try {
-                    url = new URL("C:\\Users\\Kasperi\\Documents\\NetBeansProjects\\WebApplication1\\web\\index.html"); //Some instantiated URL object
+                    url = new URL("http://localhost:8080/sokoshotel/mainpage.html?username="+name); //login succesfull
                     URI uri = url.toURI();
                     return Response.seeOther(uri).build(); //logged in succesfull
                 } catch (MalformedURLException ex) {
@@ -76,7 +76,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
 
                 URL url;
                 try {
-                    url = new URL("http://www.yahoo.com"); //Some instantiated URL object
+                    url = new URL("http://localhost:8080/sokoshotel/?dc=wrong"); //wrong password
                     URI uri = url.toURI();
                     return Response.seeOther(uri).build();//logged in failed
                 } catch (MalformedURLException ex) {
@@ -87,7 +87,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
 
             URL url;
             try {
-                url = new URL("http://www.yahoo.com"); //Some instantiated URL object
+                url = new URL("http://localhost:8080/sokoshotel/?dc=wrong"); //wrong username
                 URI uri = url.toURI();
                 return Response.seeOther(uri).build();//logged in failed
             } catch (MalformedURLException ex) {
