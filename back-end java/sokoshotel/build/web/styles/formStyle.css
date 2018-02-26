@@ -1,0 +1,98 @@
+@import "buttonStyle.css";
+
+.noteForm {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(4, 24%);
+	grid-template-rows: repeat(16, 30px);
+	text-align: left;
+	font-size: 0.75rem;
+	grid-row-gap: 5px;
+	grid-column-gap: 10px;
+	font-family: Arial;
+}
+
+.noteForm input:not(#fileInput), select {
+	border: none;
+	box-shadow: 0px 8px 8px 0px #ccc;
+}
+
+form label {
+	padding-top: 12px;
+	font-size: 1rem;
+}
+
+#dateLabel {
+	grid-column: 1 / 1;
+	grid-row: 3 / 3;
+	
+}
+#dateInput {
+	grid-column: 1 / span 2;
+	grid-row: 4 / 4;
+}
+#timeLabel {
+	grid-column: 3 / 3;
+	grid-row: 3 / 3;
+}
+#timeInput {
+	grid-column: 3 / 3;
+	grid-row: 4 / 4;
+}
+#departmentLabel {
+	grid-column: 1 / span 2;
+	grid-row: 5 / 5;
+}
+#departmentSelect {
+	grid-column: 1 / span 2;
+	grid-row: 6 / 6;
+}
+#placeLabel {
+	grid-column: 3 / 3;
+	grid-row: 5 / 5;
+}
+#placeSelect {
+	grid-column: 3 / 3;
+	grid-row: 6 / 6;
+}
+#titleLabel {
+	grid-column: 1 / 1;
+	grid-row: 7 / 7;
+}
+#titleInput {
+	grid-column: 1 / span 4;
+	grid-row: 8 / 8;
+}
+#detailsLabel {
+	grid-column: 1 / 1;
+	grid-row: 9 / 9;
+}
+#detailsInput {
+	grid-column: 1 / span 4;
+	grid-row: 10 / span 3;
+}
+#attachmentLabel {
+	grid-column: 1 / span 2;
+	grid-row: 13 / 13;
+}
+#fileInput {
+	grid-column: 1 / span 2;
+	grid-row: 14 / 14;
+	border: 0;
+}
+#historyLabel {
+	grid-column: 3 / span 2;
+	grid-row: 13 / 13;
+}
+#historyOutput {
+	grid-column: 3 / span 2;
+	grid-row: 14 / 14;
+}
+#saveButton {
+	grid-column: 2 / 2;
+	grid-row: 16 / 16;
+}
+#cancelButton {
+	grid-column: 3 / 3;
+	grid-row: 16 / 16;
+}

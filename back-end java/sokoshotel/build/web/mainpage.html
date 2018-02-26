@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Main Page</title>
+	<link rel="stylesheet" type="text/css" href="./style2.css">
+	<script src="js/saveNote.js"></script>
+	<script src="script.js"></script>
+
+</head>
+
+<body>
+	<nav>
+
+		<div class="topnav">
+			<a class="active" href="#home"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/TF17_vantaa_hotel_logo_400x140_20170120.png" alt="Logo" style="width: 40%; height: 40%; float: left;"></a>
+			<a style="float: right;"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/user_icon.png" style="width: 20%; height: 20%;" alt="icon">                      Username</a>
+		</div>
+
+	</nav>
+	<div class="align-center">
+
+		<form action="submit" class="float-right">
+			<input type="radio" name="option" value="all"> <b>All</b>
+			<input type="radio" name="option" value="new"> <b>New</b>
+			<input type="radio" name="option" value="in_process"> <b>In progress</b>
+			<input type="radio" name="option" value="done"> <b>Done</b>
+			<input type="radio" name="option" value="cancelled"> <b>Cancelled</b>
+		</form>
+		<div class="boxed">
+		</div>
+		<div class="wrapper">
+			<input type="button" value="Add new task" class="button" id="myBtn">
+		</div>
+	</div>
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<form class="noteForm">
+				
+				<ul class="button-group">
+					<li><button class="button" id="newButton" value = "1">
+					<img src="../../../html/Icons/Add.png" alt="add">
+					<label>NEW</label></button></li>
+					<li><button class="button" id="inProcess" value="2" disabled><img src="../../../html/Icons/inProcess.png" alt="icon">
+					<label>IN PROCESS</label></button></li>
+					<li><button class="button" id="done" value="3" disabled><img src="../../../html/Icons/done.png" alt="done">
+					<label>DONE</label></button></li>
+					<li><button class="button" id="cancelled" value="4" disabled><img src="../../../html/Icons/cancelled.png" alt="cancelled">
+					<label>CANCELLED</label></button></li>
+				</ul>
+				<label id="dateLabel">Due date</label>
+				<input type="date" id="dateInput">
+				<label id="timeLabel">Due time</label>
+				<input type="time" id="timeInput">
+				<label id="departmentLabel">Responsible department</label>
+				<select id="departmentSelect">
+  					<option value="1">Management</option>
+					<option value="2">Front Office</option>
+  					<option value="3">Housekeeping</option>
+					<option value="4">Guest Service</option>
+					<option value="5">Food and Beverage</option>
+					<option value="6">Engineering and Maintenance</option>
+					<option value="7">Other</option>
+				</select>
+				<label id="placeLabel">Place</label>
+				<select id="placeSelect">
+  						<option value="1">Room</option>
+						<option value="2">Small restaurant</option>
+  						<option value="3">Conference hall</option>
+						<option value="4">Main hall</option>
+					</select>
+				<label id="titleLabel">Title</label>
+				<input type="text" id="titleInput">
+				<label id="detailsLabel">Details</label>
+				<input type="text" id="detailsInput">
+				<label id="attachmentLabel">Attachment</label>
+				<input type="file" id="fileInput">
+				<label id="historyLabel">History:</label>
+				<output id="historyOutput"></output>
+				<input type="submit" class="templateButtons" id="saveButton" value="SAVE">
+				<input type="submit" class="templateButtons" id="cancelButton" value="CANCEL">
+			</form>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
