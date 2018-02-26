@@ -1,0 +1,10 @@
+ALTER TABLE `tasks`
+	ALTER `dueDate` DROP DEFAULT,
+	ALTER `dueTime` DROP DEFAULT;
+ALTER TABLE `tasks`
+	CHANGE COLUMN `dueDate` `dueDate` VARCHAR(50) NOT NULL AFTER `taskStatus`,
+	CHANGE COLUMN `dueTime` `dueTime` VARCHAR(50) NOT NULL AFTER `dueDate`;
+
+ALTER TABLE `tasks`
+	CHANGE COLUMN `detils` `details` VARCHAR(50) NULL DEFAULT '0' AFTER `place`;
+
