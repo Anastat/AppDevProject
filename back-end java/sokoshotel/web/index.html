@@ -4,8 +4,9 @@
 	<meta charset="utf-8">
 	<title>Login Page</title>
 	<link href="styles/style.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="js/script2.js"></script>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    
 
 </head>
 	<body>
@@ -14,10 +15,10 @@
             <div class="wrap">
             <p style="text-align:center;"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/TF17_vantaa_hotel_logo_400x140_20170120.png" alt="Logo"></p>
                 <p class="form-title"></p>
-                <form class="login">
+                <form class="login" method="post" action="webresources/users/login">
                 <p id="wrong" class="dynamic-content">Wrong username or password!</p>
-                <input type="text" placeholder="Username"  />
-                <input type="password" placeholder="Password" />
+                <input type="text" placeholder="Username" name="username" />
+                <input type="password" placeholder="Password" name="password" />
                 <input type="submit" value="Sign In" />
                 </form>
             </div>
