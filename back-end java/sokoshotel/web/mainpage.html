@@ -47,15 +47,16 @@
 			<form class="noteForm">
 				
 				<ul class="button-group">
-					<li><button class="button" id="newButton" value = "1">
-					<img src="../../../html/Icons/Add.png" alt="add"><br>
-					NEW</button></li>
-					<li><button class="button" id="inProcess" value="2" disabled><img src="../../../html/Icons/inProcess.png" alt="icon"><br>
-					IN PROCESS</button></li>
-					<li><button class="button" id="done" value="3" disabled><img src="../../../html/Icons/done.png" alt="done"><br>
-					DONE</button></li>
-					<li><button class="button" id="cancelled" value="4" disabled><img src="../../../html/Icons/cancelled.png" alt="cancelled"><br>
-					CANCELLED</button></li>
+                                    
+					<li><button class="button notDisabled" id="newButton" value = "1" type="button" onclick="hideNew()">
+                    <img src="../../../html/Icons/Add.png" alt="add"><br>
+                    NEW</button></li>
+                    <li><button class="button disabled" id="inProcess" value="2" type="button" onclick="hideInProcess()"><img src="../../../html/Icons/inProcess.png" alt="icon"><br>
+                    IN PROCESS</button></li>
+                    <li><button class="button disabled" id="done" value="3" type="button" onclick="hideDone()"><img src="../../../html/Icons/done.png" alt="done"><br>
+                    DONE</button></li>
+                    <li><button class="button disabled" id="cancelled" value="4" type="button" onclick="hideCancelled()"><img src="../../../html/Icons/cancelled.png" alt="cancelled"><br>
+                    CANCELLED</button></li>
 				</ul>
 				<label id="dateLabel">Due date</label>
 				<input type="date" id="dateInput">
@@ -92,7 +93,52 @@
 		</div>
 
 	</div>
-
+	<script>
+		function hideNew() {
+			var a = document.getElementById("newButton");
+			var b = document.getElementById("inProcess");
+			var c = document.getElementById("cancelled");
+			var d = document.getElementById("done");
+			console.log(document.getElementById("newButton").value);
+			a.className = "button notDisabled";
+			b.className = "button disabled";
+			c.className = "button disabled";
+			d.className = "button disabled";
+		}
+		function hideInProcess() {
+			var a = document.getElementById("newButton");
+			var b = document.getElementById("inProcess");
+			var c = document.getElementById("cancelled");
+			var d = document.getElementById("done");
+			console.log(document.getElementById("inProcess").value);
+			a.className = "button disabled";
+			b.className = "button notDisabled";
+			c.className = "button disabled";
+			d.className = "button disabled";
+		}
+		function hideCancelled() {
+			var a = document.getElementById("newButton");
+			var b = document.getElementById("inProcess");
+			var c = document.getElementById("cancelled");
+			var d = document.getElementById("done");
+			console.log(document.getElementById("cancelled").value);	
+			a.className = "button disabled";
+			b.className = "button disabled";
+			c.className = "button notDisabled";
+			d.className = "button disabled";
+		}
+		function hideDone() {
+			var a = document.getElementById("newButton");
+			var b = document.getElementById("inProcess");
+			var c = document.getElementById("cancelled");
+			var d = document.getElementById("done");
+			console.log(document.getElementById("done").value);	
+			a.className = "button disabled";
+			b.className = "button disabled";
+			c.className = "button disabled";
+			d.className = "button notDisabled";
+		}
+	</script>
 </body>
 
 </html>

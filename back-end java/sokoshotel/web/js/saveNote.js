@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     //Reading input from the note form 
     noteInput.addEventListener("input", function () {
-		const taskStatus = noteInput.querySelector(".button-group").value;
+		const taskStatus = noteInput.querySelector("button.notDisabled").value;
                 const dueDate = noteInput.querySelector("#dateInput").value;
 		const dueTime = noteInput.querySelector("#timeInput").value;
 		const department = noteInput.querySelector("#departmentSelect").value;
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                 departmentid.departmentID = parseInt(department);
                 placeid.placeID = parseInt(place);
-                taskstatusID.taskStatusID = 1;
+                taskstatusID.taskStatusID = taskStatus;
 		note.taskStatus = taskstatusID;
 		note.dueDate = dueDate;
 		note.dueTime = dueTime;
