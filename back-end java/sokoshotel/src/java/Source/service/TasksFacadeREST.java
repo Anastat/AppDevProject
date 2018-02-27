@@ -5,12 +5,22 @@
  */
 package Source.service;
 
+import Source.Departments;
+import Source.Place;
 import Source.Tasks;
+import Source.Taskstatus;
+import com.sun.xml.ws.developer.servlet.HttpSessionScope;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.ejb.Stateless;
+import javax.faces.annotation.RequestParameterMap;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -20,9 +30,12 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -60,7 +73,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("title", tasks.getTitle());
             obj.put("place", tasks.getPlace().getPlaceID());
             obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
-            obj.put("details", tasks.getDetils());
+            obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
             arr.put(obj);          
             obj = new JSONObject();           
@@ -89,7 +102,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("title", tasks.getTitle());
             obj.put("place", tasks.getPlace().getPlaceID());
             obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
-            obj.put("details", tasks.getDetils());
+            obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
             arr.put(obj);          
             obj = new JSONObject();           
@@ -118,7 +131,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("title", tasks.getTitle());
             obj.put("place", tasks.getPlace().getPlaceID());
             obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
-            obj.put("details", tasks.getDetils());
+            obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
             arr.put(obj);          
             obj = new JSONObject();           
@@ -147,13 +160,22 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("title", tasks.getTitle());
             obj.put("place", tasks.getPlace().getPlaceID());
             obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
-            obj.put("details", tasks.getDetils());
+            obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
             arr.put(obj);          
             obj = new JSONObject();           
         }
         return arr.toString();
     }
+    
+    @POST
+    @Path("addNewNote")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String addNewNote(Tasks t){
+        super.create(t);
+        return "test";
+    }
+    
 
     @POST
     @Override

@@ -43,7 +43,7 @@ public class Place implements Serializable {
     @Column(name = "placeID")
     private Integer placeID;
     @Basic(optional = false)    
-    @Size(min = 1, max = 50)
+    //@Size(min = 1, max = 50)
     @Column(name = "placeName")
     private String placeName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "place")

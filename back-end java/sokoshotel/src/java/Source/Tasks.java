@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Tasks.findByDueDate", query = "SELECT t FROM Tasks t WHERE t.dueDate = :dueDate")
     , @NamedQuery(name = "Tasks.findByDueTime", query = "SELECT t FROM Tasks t WHERE t.dueTime = :dueTime")
     , @NamedQuery(name = "Tasks.findByTitle", query = "SELECT t FROM Tasks t WHERE t.title = :title")
-    , @NamedQuery(name = "Tasks.findByDetils", query = "SELECT t FROM Tasks t WHERE t.detils = :detils")
+    , @NamedQuery(name = "Tasks.findByDetails", query = "SELECT t FROM Tasks t WHERE t.details = :details")
     , @NamedQuery(name = "Tasks.findByAttachment", query = "SELECT t FROM Tasks t WHERE t.attachment = :attachment")})
 public class Tasks implements Serializable {
 
@@ -54,22 +54,22 @@ public class Tasks implements Serializable {
     @Basic(optional = false)
     
     @Column(name = "dueDate")
-    @Temporal(TemporalType.DATE)
-    private Date dueDate;
+    //@Temporal(TemporalType.DATE)
+    private String dueDate;
     @Basic(optional = false)
     
     @Column(name = "dueTime")
-    @Temporal(TemporalType.TIME)
-    private Date dueTime;
+    //@Temporal(TemporalType.TIME)
+    private String dueTime;
     @Basic(optional = false)
     
-    @Size(min = 1, max = 50)
+    //@Size(min = 1, max = 50)
     @Column(name = "title")
     private String title;
-    @Size(max = 50)
-    @Column(name = "detils")
-    private String detils;
-    @Size(max = 50)
+    //@Size(max = 50)
+    @Column(name = "details")
+    private String details;
+    //@Size(max = 50)
     @Column(name = "attachment")
     private String attachment;
     @JoinColumn(name = "department", referencedColumnName = "departmentID")
@@ -91,12 +91,17 @@ public class Tasks implements Serializable {
         this.taskID = taskID;
     }
 
-    public Tasks(Integer taskID, Date dueDate, Date dueTime, String title) {
-        this.taskID = taskID;
+    public Tasks(String dueDate, String dueTime, String title, String details, String attachment, Departments department, Place place, Taskstatus taskStatus) {
         this.dueDate = dueDate;
         this.dueTime = dueTime;
         this.title = title;
+        this.details = details;
+        this.attachment = attachment;
+        this.department = department;
+        this.place = place;
+        this.taskStatus = taskStatus;
     }
+
 
     public Integer getTaskID() {
         return taskID;
@@ -106,21 +111,23 @@ public class Tasks implements Serializable {
         this.taskID = taskID;
     }
 
-    public Date getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public Date getDueTime() {
+    public String getDueTime() {
         return dueTime;
     }
 
-    public void setDueTime(Date dueTime) {
+    public void setDueTime(String dueTime) {
         this.dueTime = dueTime;
     }
+
+
 
     public String getTitle() {
         return title;
@@ -130,12 +137,12 @@ public class Tasks implements Serializable {
         this.title = title;
     }
 
-    public String getDetils() {
-        return detils;
+    public String getDetails() {
+        return details;
     }
 
-    public void setDetils(String detils) {
-        this.detils = detils;
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public String getAttachment() {
