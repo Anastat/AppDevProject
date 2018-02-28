@@ -141,12 +141,20 @@
 			c.className = "button disabled";
 			d.className = "button notDisabled";
 		}
-                
-                var username = document.getElementById('username');
-                console.log(username.innerHTML);
+
+
+
+			//Get username
+            console.log(window.location.href);
+            var url_string = window.location.href;
+			var url = new URL(url_string);
+			var c = url.searchParams.get("username");
+			console.log(c);
+
+
             $.ajax({
             type: 'GET',
-            url: "http://localhost:8080/sokoshotel/webresources/users/getdpfromname/" + username.innerHTML,
+            url: "http://localhost:8080/sokoshotel/webresources/users/getdpfromname/" + c,
             dataType: "json",
             success: function(data){
             console.log("username found");
