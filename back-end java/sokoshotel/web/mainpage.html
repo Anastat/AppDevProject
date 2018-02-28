@@ -28,10 +28,10 @@
 
 		<form action="submit" class="float-right">
 			<input type="radio" name="option" value="all" onclick="findAll()"> <b>All</b>
-			<input type="radio" name="option" value="new" onclick="findnewById(username)"> <b>New</b>
-			<input type="radio" name="option" value="in_process" onclick="findinprocessById(username)"> <b>In progress</b>
-			<input type="radio" name="option" value="done" onclick="finddoneById(username)"> <b>Done</b>
-			<input type="radio" name="option" value="cancelled" onclick="findcancelledById(username)"> <b>Cancelled</b>
+			<input type="radio" name="option" value="new" onclick="findnewByName(username)"> <b>New</b>
+			<input type="radio" name="option" value="in_process" onclick="findinprocessByName(username)"> <b>In progress</b>
+			<input type="radio" name="option" value="done" onclick="finddoneByName(username)"> <b>Done</b>
+			<input type="radio" name="option" value="cancelled" onclick="findcancelledByName(username)"> <b>Cancelled</b>
 		</form>
 
 		<div id="tasks-list" class="boxed">
@@ -160,7 +160,7 @@
 			var username = url.searchParams.get("username");
 			console.log(username);
                 
-    function findcancelledById(id) {
+    function findcancelledByName(id) {
     $.ajax({
         type: 'GET',
         url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortcancelled/" + id,
@@ -171,7 +171,7 @@
         }
     });
 }
-    function findnewById(id) {
+    function findnewByName(id) {
     $.ajax({
         type: 'GET',
         url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortnew/" + id,
@@ -182,7 +182,7 @@
         }
     });
 }
-    function findinprocessById(id) {
+    function findinprocessByName(id) {
     $.ajax({
         type: 'GET',
         url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortprocess/" + id,
@@ -193,7 +193,7 @@
         }
     });
 }
-    function finddoneById(id) {
+    function finddoneByName(id) {
     $.ajax({
         type: 'GET',
         url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortdone/" + id,
@@ -208,7 +208,7 @@
     function findAll() {
     $.ajax({
         type: 'GET',
-        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/findAll",
+        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/taskList",
         dataType: "json",
         success: function(data){
             console.log("success");
