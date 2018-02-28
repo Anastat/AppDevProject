@@ -9,6 +9,7 @@ import Source.Departments;
 import Source.Place;
 import Source.Tasks;
 import Source.Taskstatus;
+import Source.Users;
 import com.sun.xml.ws.developer.servlet.HttpSessionScope;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,13 +56,14 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     @GET
     @Path("sortnew/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByNew(@PathParam("id") int id) {
+    public String sortByNew(@PathParam("id") String name) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        Users users = em.createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getSingleResult();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("New") && result.getDepartment().getDepartmentID() == id) {
+            if (result.getTaskStatus().getStatusName().equals("New") && result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
                 valid.add(result);
             }
         }
@@ -84,13 +86,14 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     @GET
     @Path("sortprocess/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByProcess(@PathParam("id") int id) {
+    public String sortByProcess(@PathParam("id") String name) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        Users users = em.createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getSingleResult();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("In process") && result.getDepartment().getDepartmentID() == id) {
+            if (result.getTaskStatus().getStatusName().equals("In process") && result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
                 valid.add(result);
             }
         }
@@ -113,13 +116,14 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     @GET
     @Path("sortdone/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByDone(@PathParam("id") int id) {
+    public String sortByDone(@PathParam("id") String name) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        Users users = em.createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getSingleResult();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("Done") && result.getDepartment().getDepartmentID() == id) {
+            if (result.getTaskStatus().getStatusName().equals("Done") && result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
                 valid.add(result);
             }
         }
@@ -142,13 +146,14 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     @GET
     @Path("sortcancelled/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByCancelled(@PathParam("id") int id) {
+    public String sortByCancelled(@PathParam("id") String name) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        Users users = em.createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getSingleResult();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("Cancelled") && result.getDepartment().getDepartmentID() == id) {
+            if (result.getTaskStatus().getStatusName().equals("Cancelled") && result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
                 valid.add(result);
             }
         }
