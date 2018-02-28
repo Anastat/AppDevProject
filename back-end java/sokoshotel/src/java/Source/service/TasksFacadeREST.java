@@ -173,29 +173,6 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         return arr.toString();
     }
     
-    @GET
-    @Path("findAll")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getAll() {
-        List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
-        JSONObject obj = new JSONObject();
-        JSONArray arr = new JSONArray();
-        for (Tasks tasks : results) {
-            obj.put("id", tasks.getTaskID());
-            obj.put("duedate", tasks.getDueDate());
-            obj.put("duetime", tasks.getDueTime());
-            obj.put("department", tasks.getDepartment().getDepartmentID());
-            obj.put("title", tasks.getTitle());
-            obj.put("place", tasks.getPlace().getPlaceID());
-            obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
-            obj.put("details", tasks.getDetails());
-            obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
-        }
-        return arr.toString();
-    }
-    
     @POST
     @Path("addNewNote")
     @Consumes(MediaType.APPLICATION_JSON)

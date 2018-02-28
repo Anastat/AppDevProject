@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-
-    const url = "webresources/tasksrest/taskList";
+	
+	$('.float-right input[type=radio]').click(function(){
+            console.log(this.value);
+            urlTaskStatus = this.value;
+            const url = `webresources/tasksrest/${urlTaskStatus}`;
+			//Fetch data from server
+            fetch(url)
+                .then(response => response.json())
+                .then(json => listTasks(json))
+                .catch(error => (console.log("Fetch crashed due to " + error)));
+        });
     
     
 	//source of the image depends of taskStatus
@@ -36,11 +45,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		const imgElement = document.querySelector("img");
         tasksELement.innerHTML = `${tasks.map(taskTemplate).join("")}`;
     }
-
-    //Fetch data from server
-    fetch(url)
-        .then(response => response.json())
-        .then(json => listTasks(json))
-        .catch(error => (console.log("Fetch crashed due to " + error)));
 
 });
