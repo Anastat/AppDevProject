@@ -89,22 +89,28 @@
 				<label id="historyLabel">History:</label>
 				<output id="historyOutput"></output>
 				<input type="submit" class="templateButtons" id="saveButton" value="SAVE">
-				<input type="submit" class="templateButtons" id="cancelButton" value="CANCEL">
+				<input type="button" class="templateButtons" id="cancelButton" value="CANCEL" onclick="hideModal()">
 			</form>
 		</div>
 
 	</div>
 	<script>
 
-
-	//Function for preventing page refresh after submit in form
-	var modal = document.getElementById('myModal');
-	$('#form').submit(function (e) {
- 		e.preventDefault();
- 		console.log("test");
- 		console.log(modal);
- 		modal.style.display = "none";
+	//Save button functionality
+	$(function(){
+  	$('form').submit(function(){
+  		modal.contentWindow.location.reload(true);
+  		  	console.log("saved hopefully");
+  		event.preventDefault();
+  		modal.style.display = "none";
+  });
 });
+
+	//Hide modal after cancel button pressed
+	var modal = document.getElementById('myModal');
+	function hideModal() {
+		modal.style.display = "none";
+	}
 
 		function hideNew() {
 			var a = document.getElementById("newButton");
