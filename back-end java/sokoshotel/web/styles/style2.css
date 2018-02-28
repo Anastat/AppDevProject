@@ -57,6 +57,7 @@ nav {
  border: none;
   width: 580px;
   height: 450px;
+  overflow: auto;
 }
 
 .wrapper {
