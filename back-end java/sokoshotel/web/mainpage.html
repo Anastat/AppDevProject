@@ -47,7 +47,7 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<form class="noteForm">
+			<form class="noteForm" id="form">
 				
 				<ul class="button-group">
                                     
@@ -97,6 +97,17 @@
 
 	</div>
 	<script>
+
+
+	//Function for preventing page refresh after submit in form
+	var modal = document.getElementById('myModal');
+	$('#form').submit(function (e) {
+ 		e.preventDefault();
+ 		console.log("test");
+ 		console.log(modal);
+ 		modal.style.display = "none";
+});
+
 		function hideNew() {
 			var a = document.getElementById("newButton");
 			var b = document.getElementById("inProcess");
