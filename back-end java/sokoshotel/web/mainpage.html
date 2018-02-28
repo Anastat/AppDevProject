@@ -28,10 +28,10 @@
 
 		<form action="submit" class="float-right">
 			<input type="radio" name="option" value="all" onclick="findAll()"> <b>All</b>
-			<input type="radio" name="option" value="new" onclick="findnewById(1)"> <b>New</b>
-			<input type="radio" name="option" value="in_process" onclick="findinprocessById(2)"> <b>In progress</b>
-			<input type="radio" name="option" value="done" onclick="finddoneById(3)"> <b>Done</b>
-			<input type="radio" name="option" value="cancelled" onclick="findcancelledById(4)"> <b>Cancelled</b>
+			<input type="radio" name="option" value="new" onclick="findnewById(username)"> <b>New</b>
+			<input type="radio" name="option" value="in_process" onclick="findinprocessById(username)"> <b>In progress</b>
+			<input type="radio" name="option" value="done" onclick="finddoneById(username)"> <b>Done</b>
+			<input type="radio" name="option" value="cancelled" onclick="findcancelledById(username)"> <b>Cancelled</b>
 		</form>
 		<div class="boxed">
                     <ul id="authors">
@@ -148,20 +148,8 @@
             console.log(window.location.href);
             var url_string = window.location.href;
 			var url = new URL(url_string);
-			var c = url.searchParams.get("username");
-			console.log(c);
-
-
-            $.ajax({
-            type: 'GET',
-            url: "http://localhost:8080/sokoshotel/webresources/users/getdpfromname/" + c,
-            dataType: "json",
-            success: function(data){
-            console.log("username found");
-            var usernameDepartment = 3;
-            console.log(data);
-
-    }});
+			var username = url.searchParams.get("username");
+			console.log(username);
                 
     function findcancelledById(id) {
     $.ajax({
