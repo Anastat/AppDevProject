@@ -233,8 +233,8 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     }
 
     @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Path("taskList")
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Tasks> findAll() {
         return super.findAll();
     }

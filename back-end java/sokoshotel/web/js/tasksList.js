@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    const url = "webresources/model.tasks/tasksList";
+    const url = "webresources/tasksrest/taskList";
+    
     
 	//source of the image depends of taskStatus
 	function imgSrc(statusId) {

@@ -10,7 +10,7 @@
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="js/saveNote.js"></script>
 	<script src="js/script.js"></script>
-        
+    <script src="js/tasksList.js"></script>    
 
 </head>
 
@@ -33,10 +33,8 @@
 			<input type="radio" name="option" value="done" onclick="finddoneById(username)"> <b>Done</b>
 			<input type="radio" name="option" value="cancelled" onclick="findcancelledById(username)"> <b>Cancelled</b>
 		</form>
-		<div class="boxed">
-                    <ul id="authors">
-                        
-                    </ul>
+
+		<div id="tasks-list" class="boxed">
 		</div>
 		<div class="wrapper">
 			<input type="button" value="Add new task" class="button" id="myBtn">
@@ -52,13 +50,13 @@
 				<ul class="button-group">
                                     
 					<li><button class="button notDisabled" id="newButton" value = "1" type="button" onclick="hideNew()">
-                    <img src="../../../html/Icons/Add.png" alt="add"><br>
+                    <img src="./Icons/Add.png" alt="add"><br>
                     NEW</button></li>
-                    <li><button class="button disabled" id="inProcess" value="2" type="button" onclick="hideInProcess()"><img src="../../../html/Icons/inProcess.png" alt="icon"><br>
+                    <li><button class="button disabled" id="inProcess" value="2" type="button" onclick="hideInProcess()"><img src="./Icons/inProcess.png" alt="icon"><br>
                     IN PROCESS</button></li>
-                    <li><button class="button disabled" id="done" value="3" type="button" onclick="hideDone()"><img src="../../../html/Icons/done.png" alt="done"><br>
+                    <li><button class="button disabled" id="done" value="3" type="button" onclick="hideDone()"><img src="./Icons/done.png" alt="done"><br>
                     DONE</button></li>
-                    <li><button class="button disabled" id="cancelled" value="4" type="button" onclick="hideCancelled()"><img src="../../../html/Icons/cancelled.png" alt="cancelled"><br>
+                    <li><button class="button disabled" id="cancelled" value="4" type="button" onclick="hideCancelled()"><img src="./Icons/cancelled.png" alt="cancelled"><br>
                     CANCELLED</button></li>
 				</ul>
 				<label id="dateLabel">Due date</label>
