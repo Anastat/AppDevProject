@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-	
+	            var url_string = window.location.href;
+			var url = new URL(url_string);
+			var username = url.searchParams.get("username");
+			//console.log(username);
+        
 	$('.float-right input[type=radio]').click(function(){
             console.log(this.value);
             urlTaskStatus = this.value;
-            const url = `webresources/tasksrest/${urlTaskStatus}`;
+            const url = `webresources/tasksrest/${urlTaskStatus}/${username}`;
 			//Fetch data from server
             fetch(url)
                 .then(response => response.json())
@@ -31,11 +35,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	function taskTemplate(task) {
 		return `
 		<div class="taskInList" id="taskID${task.taskID}">
-		<img src=${imgSrc(task.taskStatus.taskStatusID)}>
+		<img src=${imgSrc(task.taskstatus)}>
 		<h3>${task.title}</h3>
-		<p class="placeList"><strong>Place: </strong>${task.place.placeName}</p>
-		<p class="dateList"><strong>Due date: </strong>${task.dueDate}</p>
-		<p class="timeList"><strong>Due time: </strong>${task.dueTime}</p>
+		<p class="placeList"><strong>Place: </strong>${task.place}</p>
+		<p class="dateList"><strong>Due date: </strong>${task.duedate}</p>
+		<p class="timeList"><strong>Due time: </strong>${task.duetime}</p>
 		</div>
 		`;
 	}
