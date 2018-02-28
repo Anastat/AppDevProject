@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		note.attachment = attachment;
 		
        console.log(JSON.stringify(note));
-
     });
 
     //post the data to server
+    var modal = document.getElementById('myModal');
     const submitButton = document.querySelector("#saveButton");
     submitButton.addEventListener("click", function () {
         note = JSON.stringify(note);
