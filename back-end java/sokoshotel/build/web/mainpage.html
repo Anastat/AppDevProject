@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/style2.css">
 	<link rel="stylesheet" type="text/css" href="styles/buttonStyle.css">
 	<link rel="stylesheet" type="text/css" href="styles/formStyle.css">
-        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="js/saveNote.js"></script>
 	<script src="js/script.js"></script>
         
@@ -27,13 +27,16 @@
 	<div class="align-center">
 
 		<form action="submit" class="float-right">
-			<input type="radio" name="option" value="all"> <b>All</b>
-			<input type="radio" name="option" value="new"> <b>New</b>
-			<input type="radio" name="option" value="in_process"> <b>In progress</b>
-			<input type="radio" name="option" value="done"> <b>Done</b>
-			<input type="radio" name="option" value="cancelled"> <b>Cancelled</b>
+			<input type="radio" name="option" value="all" onclick="findAll()"> <b>All</b>
+			<input type="radio" name="option" value="new" onclick="findnewById(1)"> <b>New</b>
+			<input type="radio" name="option" value="in_process" onclick="findinprocessById(2)"> <b>In progress</b>
+			<input type="radio" name="option" value="done" onclick="finddoneById(3)"> <b>Done</b>
+			<input type="radio" name="option" value="cancelled" onclick="findcancelledById(4)"> <b>Cancelled</b>
 		</form>
 		<div class="boxed">
+                    <ul id="authors">
+                        
+                    </ul>
 		</div>
 		<div class="wrapper">
 			<input type="button" value="Add new task" class="button" id="myBtn">
@@ -138,6 +141,76 @@
 			c.className = "button disabled";
 			d.className = "button notDisabled";
 		}
+                
+                var username = document.getElementById('username');
+                console.log(username.innerHTML);
+            $.ajax({
+            type: 'GET',
+            url: "http://localhost:8080/sokoshotel/webresources/users/getdpfromname/" + username.innerHTML,
+            dataType: "json",
+            success: function(data){
+            console.log("username found");
+            var usernameDepartment = 3;
+            console.log(data);
+
+    }});
+                
+    function findcancelledById(id) {
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortcancelled/" + id,
+        dataType: "json",
+        success: function(data){
+            console.log("success");
+            console.log(data);
+        }
+    });
+}
+    function findnewById(id) {
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortnew/" + id,
+        dataType: "json",
+        success: function(data){
+            console.log("success");
+            console.log(data);
+        }
+    });
+}
+    function findinprocessById(id) {
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortprocess/" + id,
+        dataType: "json",
+        success: function(data){
+            console.log("success");
+            console.log(data);
+        }
+    });
+}
+    function finddoneById(id) {
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortdone/" + id,
+        dataType: "json",
+        success: function(data){
+            console.log("success");
+            console.log(data);
+        }
+    });
+}
+
+    function findAll() {
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/findAll",
+        dataType: "json",
+        success: function(data){
+            console.log("success");
+            console.log(data);
+        }
+    });
+}
 	</script>
 </body>
 

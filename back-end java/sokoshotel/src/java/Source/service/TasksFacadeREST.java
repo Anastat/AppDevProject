@@ -52,10 +52,10 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         super(Tasks.class);
     }
 
-    @POST
-    @Path("sortnew")
+    @GET
+    @Path("sortnew/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByNew(@FormParam("id") int id) {
+    public String sortByNew(@PathParam("id") int id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
@@ -81,10 +81,10 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         return arr.toString();
     }
 
-    @POST
-    @Path("sortprocess")
+    @GET
+    @Path("sortprocess/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByProcess(@FormParam("id") int id) {
+    public String sortByProcess(@PathParam("id") int id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
@@ -110,10 +110,10 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         return arr.toString();
     }
 
-    @POST
-    @Path("sortdone")
+    @GET
+    @Path("sortdone/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByDone(@FormParam("id") int id) {
+    public String sortByDone(@PathParam("id") int id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
@@ -139,10 +139,10 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         return arr.toString();
     }
 
-    @POST
-    @Path("sortcancelled")
+    @GET
+    @Path("sortcancelled/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sortByCancelled(@FormParam("id") int id) {
+    public String sortByCancelled(@PathParam("id") int id) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
@@ -153,6 +153,29 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             }
         }
         for (Tasks tasks : valid) {
+            obj.put("id", tasks.getTaskID());
+            obj.put("duedate", tasks.getDueDate());
+            obj.put("duetime", tasks.getDueTime());
+            obj.put("department", tasks.getDepartment().getDepartmentID());
+            obj.put("title", tasks.getTitle());
+            obj.put("place", tasks.getPlace().getPlaceID());
+            obj.put("taskstatus", tasks.getTaskStatus().getStatusName());
+            obj.put("details", tasks.getDetails());
+            obj.put("attachment", tasks.getAttachment());
+            arr.put(obj);          
+            obj = new JSONObject();           
+        }
+        return arr.toString();
+    }
+    
+    @GET
+    @Path("findAll")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAll() {
+        List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+        for (Tasks tasks : results) {
             obj.put("id", tasks.getTaskID());
             obj.put("duedate", tasks.getDueDate());
             obj.put("duetime", tasks.getDueTime());

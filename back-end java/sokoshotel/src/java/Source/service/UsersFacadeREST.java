@@ -101,6 +101,19 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
         return null;
         //return "<p>user created</p>";
     }
+    
+    @GET
+    @Path("getdpfromname/{name}")
+    public int getdpfromname(@PathParam("name") String name){
+        List<Users> results = em.createNamedQuery("Users.findAll", Users.class).getResultList();
+        for (Users result : results) {
+            if(result.getUsername().equals(name)){
+                return result.getDepartment().getDepartmentID();
+            }
+        }
+        return 0;
+    }
+    
 
     @PUT
     @Path("{id}")
