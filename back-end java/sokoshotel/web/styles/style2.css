@@ -1,4 +1,5 @@
-@import "styles/formStyle.css";
+@import "formStyle.css";
+@import "listStyle.css";
 
 html,
 body
@@ -53,9 +54,9 @@ nav {
 }
 
 .boxed {
-  border: 1px solid black;
+ border: none;
+  width: 580px;
   height: 450px;
-  background-color: white;
 }
 
 .wrapper {
@@ -95,6 +96,8 @@ nav {
 	overflow: auto; /* Enable scroll if needed */
 	box-shadow: 0 0 5px 5px #424a4c;
 }
+
+@media (min-width: 320px,  height 480
 
 /* The Close Button */
 .close {
