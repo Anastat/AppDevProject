@@ -42,4 +42,22 @@ window.onclick = function(event) {
     }
 }
 
+
+//Hiding button if no rights
+var newTaskButton = document.getElementById('myBtn');
+const url = 'https://randomuser.me/api/?results=8'+username.innerHTML;
+  fetch(url)
+  .then((resp) => resp.json())
+  .then(function(data) {
+    let authors = data.results;
+    return authors.map(function(author) {
+      let name = author.name.first;
+      if (data.results == 2) {
+      	newTaskButton.style.display = "none";
+      }
+    })
+  })
+  .catch(function(error) {
+    console.log(error);
+  });   
 }
