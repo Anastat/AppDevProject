@@ -27,11 +27,11 @@
 	<div class="align-center">
 
 		<form action="submit" class="float-right">
-			<input type="radio" name="option" value="taskListAll" onclick="findAll()"> <b>All</b>
-			<input type="radio" name="option" value="sortnew" onclick="findnewByName(username)"> <b>New</b>
-			<input type="radio" name="option" value="sortprocess" onclick="findinprocessByName(username)"> <b>In progress</b>
-			<input type="radio" name="option" value="sortdone" onclick="finddoneByName(username)"> <b>Done</b>
-			<input type="radio" name="option" value="sortcancelled" onclick="findcancelledByName(username)"> <b>Cancelled</b>
+			<input type="radio" name="option" value="taskListAll"> <b>All</b>
+			<input type="radio" name="option" value="sortnew"> <b>New</b>
+			<input type="radio" name="option" value="sortprocess"> <b>In progress</b>
+			<input type="radio" name="option" value="sortdone"> <b>Done</b>
+			<input type="radio" name="option" value="sortcancelled"> <b>Cancelled</b>
 		</form>
 
 		<div id="tasks-list" class="boxed">
@@ -149,71 +149,6 @@
 			d.className = "button notDisabled";
 		}
 
-
-
-			//Get username
-            console.log(window.location.href);
-            var url_string = window.location.href;
-			var url = new URL(url_string);
-			var username = url.searchParams.get("username");                 
-                        console.log(document.cookie);
-                
-    function findcancelledByName(id) {
-    $.ajax({
-        type: 'GET',
-        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortcancelled/" + id,
-        dataType: "json",
-        success: function(data){
-            console.log("success");
-            console.log(data);
-        }
-    });
-}
-    function findnewByName(id) {
-    $.ajax({
-        type: 'GET',
-        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortnew/" + id,
-        dataType: "json",
-        success: function(data){
-            console.log("success");
-            console.log(data);
-        }
-    });
-}
-    function findinprocessByName(id) {
-    $.ajax({
-        type: 'GET',
-        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortprocess/" + id,
-        dataType: "json",
-        success: function(data){
-            console.log("success");
-            console.log(data);
-        }
-    });
-}
-    function finddoneByName(id) {
-    $.ajax({
-        type: 'GET',
-        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/sortdone/" + id,
-        dataType: "json",
-        success: function(data){
-            console.log("success");
-            console.log(data);
-        }
-    });
-}
-
-    function findAll() {
-    $.ajax({
-        type: 'GET',
-        url: "http://localhost:8080/sokoshotel/webresources/tasksrest/taskList",
-        dataType: "json",
-        success: function(data){
-            console.log("success");
-            console.log(data);
-        }
-    });
-}
 	</script>
 </body>
 
