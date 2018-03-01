@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-	            var url_string = window.location.href;
-			var url = new URL(url_string);
-			var username = url.searchParams.get("username");
-			//console.log(username);
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var username = url.searchParams.get("username");
+	
         
 	$('.float-right input[type=radio]').click(function(){
             console.log(this.value);

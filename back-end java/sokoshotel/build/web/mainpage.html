@@ -45,7 +45,7 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<form class="noteForm" id="form">
+                        <form class="noteForm" id="form">
 				
 				<ul class="button-group">
                                     
@@ -89,22 +89,20 @@
 				<label id="historyLabel">History:</label>
 				<output id="historyOutput"></output>
 				<input type="submit" class="templateButtons" id="saveButton" value="SAVE">
-				<input type="submit" class="templateButtons" id="cancelButton" value="CANCEL">
+				<input type="button" class="templateButtons" id="cancelButton" value="CANCEL" onclick="hideModal()">
 			</form>
 		</div>
 
 	</div>
 	<script>
 
+	//Save button functionality
 
-	//Function for preventing page refresh after submit in form
+	//Hide modal after cancel button pressed
 	var modal = document.getElementById('myModal');
-	$('#form').submit(function (e) {
- 		e.preventDefault();
- 		console.log("test");
- 		console.log(modal);
- 		modal.style.display = "none";
-});
+	function hideModal() {
+		modal.style.display = "none";
+	}
 
 		function hideNew() {
 			var a = document.getElementById("newButton");
@@ -158,7 +156,8 @@
             var url_string = window.location.href;
 			var url = new URL(url_string);
 			var username = url.searchParams.get("username");
-			console.log(username);
+			console.log(username);                   
+                        console.log(document.cookie);
                 
     function findcancelledByName(id) {
     $.ajax({

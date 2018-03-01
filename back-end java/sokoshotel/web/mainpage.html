@@ -45,7 +45,7 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<form class="noteForm" id="form">
+                        <form class="noteForm" id="form">
 				
 				<ul class="button-group">
                                     
@@ -97,14 +97,6 @@
 	<script>
 
 	//Save button functionality
-	$(function(){
-  	$('form').submit(function(){
-  		modal.contentWindow.location.reload(true);
-  		  	console.log("saved hopefully");
-  		event.preventDefault();
-  		modal.style.display = "none";
-  });
-});
 
 	//Hide modal after cancel button pressed
 	var modal = document.getElementById('myModal');
@@ -164,7 +156,8 @@
             var url_string = window.location.href;
 			var url = new URL(url_string);
 			var username = url.searchParams.get("username");
-			console.log(username);
+			console.log(username);                   
+                        console.log(document.cookie);
                 
     function findcancelledByName(id) {
     $.ajax({
