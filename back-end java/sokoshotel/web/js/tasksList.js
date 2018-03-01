@@ -1,14 +1,18 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-	var url_string = window.location.href;
-	var url = new URL(url_string);
-	var username = url.searchParams.get("username");
 	
+  function getCookie(name)
+  {
+    var re = new RegExp(name + "=([^;]+)");
+    var value = re.exec(document.cookie);
+    return (value != null) ? unescape(value[1]) : null;
+  }        
         
 	$('.float-right input[type=radio]').click(function(){
             console.log(this.value);
             urlTaskStatus = this.value;
-            const url = `webresources/tasksrest/${urlTaskStatus}/${username}`;
+            const url = `webresources/tasksrest/${urlTaskStatus}/${getCookie("username")}`;
 			//Fetch data from server
+                        console.log(url);
             fetch(url)
                 .then(response => response.json())
                 .then(json => listTasks(json))
@@ -48,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const tasksELement = document.getElementById("tasks-list");
 		const imgElement = document.querySelector("img");
         tasksELement.innerHTML = `${tasks.map(taskTemplate).join("")}`;
+        console.log(tasks);
     }
+    
 
 });

@@ -221,9 +221,16 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     @Produces({MediaType.APPLICATION_JSON})
     public String findAllWithUselessParam(@PathParam("id") String name) {
         List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        Users users = em.createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getSingleResult();
+        List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
-        for (Tasks tasks : results) {
+        for (Tasks result : results) {
+            if (result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
+                valid.add(result);
+            }
+        }
+        for (Tasks tasks : valid) {
             obj.put("taskID", tasks.getTaskID());
             obj.put("duedate", tasks.getDueDate());
             obj.put("duetime", tasks.getDueTime());

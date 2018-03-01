@@ -66,7 +66,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
             if (results.get(0).getPassword().equals(pw)) {
                 URL url;
                 try {
-                    url = new URL("http://localhost:8080/sokoshotel/mainpage.html?username="+name); //login succesfull
+                    url = new URL("http://localhost:8080/sokoshotel/mainpage.html"); //login succesfull
                     URI uri = url.toURI();
                     return Response.seeOther(uri).build(); //logged in succesfull
                 } catch (MalformedURLException ex) {
