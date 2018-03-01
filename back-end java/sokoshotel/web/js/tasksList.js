@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-	
+            const url = `webresources/tasksrest/taskListAll/${getCookie("username")}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(json => listTasks(json))
+                .catch(error => (console.log("Fetch crashed due to " + error)));
+        
   function getCookie(name)
   {
     var re = new RegExp(name + "=([^;]+)");

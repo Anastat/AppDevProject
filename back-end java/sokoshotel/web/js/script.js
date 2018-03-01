@@ -49,9 +49,7 @@ const url = 'webresources/users/getRights/'+username.innerHTML;
 console.log(url);
   fetch(url)
   .then((resp) => resp.json())
-  .then(function(data) {
-      console.log(data);
-        
+  .then(function(data) {      
       if (data == 2) {
       	newTaskButton.style.display = "none";
       }
