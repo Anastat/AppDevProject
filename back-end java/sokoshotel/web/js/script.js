@@ -45,18 +45,18 @@ window.onclick = function(event) {
 
 //Hiding button if no rights
 var newTaskButton = document.getElementById('myBtn');
-const url = 'https://randomuser.me/api/?results=8'+username.innerHTML;
+const url = 'webresources/users/getRights/'+username.innerHTML;
+console.log(url);
   fetch(url)
   .then((resp) => resp.json())
   .then(function(data) {
-    let authors = data.results;
-    return authors.map(function(author) {
-      let name = author.name.first;
-      if (data.results == 2) {
+      console.log(data);
+        
+      if (data == 2) {
       	newTaskButton.style.display = "none";
       }
     })
-  })
+
   .catch(function(error) {
     console.log(error);
   });   

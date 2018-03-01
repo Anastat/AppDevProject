@@ -103,15 +103,10 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
     }
     
     @GET
-    @Path("getdpfromname/{name}")
-    public int getdpfromname(@PathParam("name") String name){
-        List<Users> results = em.createNamedQuery("Users.findAll", Users.class).getResultList();
-        for (Users result : results) {
-            if(result.getUsername().equals(name)){
-                return result.getDepartment().getDepartmentID();
-            }
-        }
-        return 0;
+    @Path("getRights/{name}")
+    public int getRight(@PathParam("name") String name){
+        Users results = em.createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getSingleResult();
+        return results.getRights().getRightsID();
     }
     
 
