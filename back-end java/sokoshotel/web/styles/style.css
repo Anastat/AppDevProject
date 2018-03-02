@@ -1,85 +1,116 @@
-body
-{
-    background: url('https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/img/calendar_blur.jpg') fixed;
-    background-size: cover;
-    padding: 0;
-    margin: 0;
+@import "buttonStyle.css";
+
+body {
+	background: url('https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/img/calendar_blur.jpg') fixed;
+	background-size: cover;
+	padding: 0;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .dynamic-content {
-    display:none;
+	display: none;
 }
 
-.wrap
-{
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 99;
+img {
+	width: 320px;
 }
 
-p.form-title
-{
-    font-family: 'Open Sans' , sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    color: #FFFFFF;
-    margin-top: 5%;
-    text-transform: uppercase;
-    letter-spacing: 4px;
+.row {
+	position: fixed;
+	width: 600px;
+	height: 400px;
+	text-align: center;
+	/*display content in the center*/
+	transform: translate(-50%, -50%); 
+	top: 50%;
+	left: 50%;
 }
 
-form
-{
-    width: 250px;
-    margin: 0 auto;
+.wrap {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
 }
 
-form.login input[type="text"], form.login input[type="password"]
-{
-    width: 100%;
-    margin: 0;
-    background: 0;
-    border: 0;
-    border-bottom: 1px solid black;
-    outline: 0;
-    font-style: italic;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    color: #FFFFFF;
-    outline: 0;
+p.form-title {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	text-align: center;
+	color: #FFFFFF;
+	margin-top: 5%;
+	text-transform: uppercase;
+	letter-spacing: 4px;
 }
 
-form.login input[type="submit"]
-{
-    width: 100%;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: white;
-    margin-top: 16px;
-    outline: 0;
-    cursor: pointer;
-    letter-spacing: 1px;
-    border-radius: 25px;
-    background: red;
+form {
+	display: flex;
+	margin: 0 auto;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	flex-direction: row;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: black;
-    opacity: 1; /* Firefox */
+input {
+	width: 250px;
+	outline: 0;
+	font-size: 14px;
+	height: 40px;
+	border-radius: 7px;
+	padding: 5px;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: black;
+
+form.login input[type="text"],
+form.login input[type="password"] {
+	background: #eae9e1;
+	font-style: italic;
+	font-weight: 400;
+	letter-spacing: 1px;
+	color: black;
+	border: 1px solid #a1a1a1;
+	box-shadow:  4px 4px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: black;
+@media screen and (max-width: 540px) {
+form { 
+	flex-direction: column;
+	align-items: center;
+	}
+}
+
+form.login input[type="submit"] {
+	margin-top: 20px;
+	height: 45px;
+    font-weight: bold;
+	text-transform: uppercase;
+	color: white;
+	cursor: pointer;
+	letter-spacing: 1px;
+	 border: 2px solid #bd0505;
+    text-shadow: 0 -1px 1px #777;
+     box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #800;
+	background: linear-gradient(#f91f1f, #f90b0b 20%, #c30505 80%, #a90404);
+}
+
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #8a8a8a;
+	opacity: 1;
+	/* Firefox */
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: black;
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: black;
 }
