@@ -13,7 +13,7 @@ body {
 }
 
 img {
-	width: 320px;
+	width: 400px;
 }
 
 .row {
@@ -78,6 +78,9 @@ form.login input[type="password"] {
 }
 
 @media screen and (max-width: 540px) {
+	img {
+	width: 280px;
+}
 form { 
 	flex-direction: column;
 	align-items: center;
