@@ -1,8 +1,8 @@
 @import "buttonStyle.css";
 
 body {
-	background: url('https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/img/calendar_blur.jpg') fixed;
-	background-size: cover;
+
+
 	padding: 0;
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
@@ -15,27 +15,33 @@ body {
 img {
 	width: 400px;
 }
-
-.row {
-	position: fixed;
-	width: 600px;
-	height: 400px;
-	text-align: center;
-	/*display content in the center*/
-	transform: translate(-50%, -50%); 
-	top: 50%;
-	left: 50%;
-}
-
-.wrap {
+/*div for the blur effect of the background-image*/
+.row::before {
+	content: "";
+	background: url('https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/img/calendar_blur.jpg') fixed;
+	background-size: cover;
 	width: 100%;
 	height: 100%;
 	min-height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 99;
+	z-index: -1;
+	filter: blur(5px);
 }
+
+.wrap {
+	position: fixed;
+	width: 600px;
+	height: 400px;
+	/*display content in the center*/
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	z-index: 9999;
+}
+
+
 
 p.form-title {
 	font-family: 'Open Sans', sans-serif;
@@ -68,36 +74,36 @@ input {
 
 form.login input[type="text"],
 form.login input[type="password"] {
-	background: #eae9e1;
+	background: #f5f0e8;
 	font-style: italic;
 	font-weight: 400;
 	letter-spacing: 1px;
 	color: black;
 	border: 1px solid #a1a1a1;
-	box-shadow:  4px 4px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow: 4px 4px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
 @media screen and (max-width: 540px) {
 	img {
-	width: 280px;
-}
-form { 
-	flex-direction: column;
-	align-items: center;
+		width: 280px;
+	}
+	form {
+		flex-direction: column;
+		align-items: center;
 	}
 }
 
 form.login input[type="submit"] {
 	margin-top: 20px;
 	height: 45px;
-    font-weight: bold;
+	font-weight: bold;
 	text-transform: uppercase;
 	color: white;
 	cursor: pointer;
 	letter-spacing: 1px;
-	 border: 2px solid #bd0505;
-    text-shadow: 0 -1px 1px #777;
-     box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #800;
+	border: 2px solid #bd0505;
+	text-shadow: 0 -1px 1px #777;
+	box-shadow: 0 0 0 60px rgba(0, 0, 0, 0) inset, .1em .1em .2em #800;
 	background: linear-gradient(#f91f1f, #f90b0b 20%, #c30505 80%, #a90404);
 }
 

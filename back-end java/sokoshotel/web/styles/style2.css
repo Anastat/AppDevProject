@@ -2,114 +2,179 @@
 @import "listStyle.css";
 
 html,
-body
-{
-    background: url('https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/img/calendar.jpg') fixed;
-    background-size: cover;
-    padding: 0;
-    margin: 0;
-    height: 100%;
+body {
+	padding: 0;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+/*div for the blur effect of the background-image*/
+.blur::before {
+	content: "";
+	background: url('https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/img/calendar.jpg') fixed;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	filter: blur(5px);
+}
+
+.content {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas: "nav nav nav nav" "content content content aside" "content content content aside" "content content content aside";
+	z-index: -1;
 }
 
 nav {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+	grid-area: nav;
 }
 
 .topnav {
-  overflow: hidden;
-  background-color: #eae9e1;
-  -webkit-box-shadow:0px 1px 1px black;
- -moz-box-shadow:0px 1px 1px black;
- box-shadow:0px 1px 1px black;
+	overflow: hidden;
+	background-color: #f5f0e8;
+	-webkit-box-shadow: 0px 1px 1px black;
+	-moz-box-shadow: 0px 1px 1px black;
+	box-shadow: 0px 1px 1px black;
 }
 
 .topnav a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 10px 15px;
-  text-decoration: none;
-  font-size: 17px;
+	float: left;
+	color: black;
+	text-align: center;
+	padding: 10px 15px;
+	text-decoration: none;
+	font-size: 17px;
 }
 
 .topnav a:hover {
-  background-color: #eae9e1;
-  color: black;
+	background-color: #f5f0e8;
+	color: black;
 }
 
 .topnav a.active {
-  background-color: #eae9e1;
-  color: black;
+	background-color: #f5f0e8;
+	color: black;
+}
+
+.icon {
+	width: 2%; 
+	float: right;
 }
 
 .align-center {
+	width: 100%;
+	height: 100%;
+	position: relative;
 	margin: auto;
-    width: 50%;
-    padding: 100px;
+	grid-area: content;
+}
+
+aside .button, .align-center .button {
+	width: 200px;
+	height: 40px;
+	background-color: #f5f0e8;
+	text-transform: uppercase;
+	cursor: pointer;
+	letter-spacing: 1px;
+	font-weight: bold;
+	border: 1px solid #a1a1a1;
+	box-shadow: 4px 4px 5px 0px rgba(50, 50, 50, 0.75);
+	border-radius: 7px;
 }
 
 .float-right {
-	padding-left: 50%;
+	text-align: right;
 }
 
+
+
 .boxed {
- border: none;
-  width: 580px;
-  height: 450px;
-  overflow: auto;
+	border: none;
+	width: 100%;
+	height: 75%;
+	overflow: auto;
 }
 
 .wrapper {
 	padding-top: 2%;
-    text-align: center;
+	text-align: center;
 }
 
-.button {
-    background-color: white;
-    height: 30px;
-    width: 100px;
+aside {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	vertical-align: center;
+	grid-area: aside;
+	align-content: center;
+}
+
+aside ul {
+	list-style: none;
+}
+aside ul li {
+	margin: 0 0 10% 0;
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 70px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	padding-top: 4%;
+	/* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4);
+	/* Black w/ opacity */
 }
 
 /* Modal Content */
+
 .modal-content {
-	background-color: #F5F0EB;
-    margin: auto;
-    padding: 20px;
-	padding-top: 40px;
-    border: 1px solid #888;
-    width: 30%;
-    height: 75%;
-	overflow: auto; /* Enable scroll if needed */
+	background-color: #f5f0e8;
+	padding: 20px;
+	margin-left: 35%;
+	border: 1px solid #888;
+	width: 420px;
+	height: 600px;
+	overflow: auto;
+	/* Enable scroll if needed */
 	box-shadow: 0 0 5px 5px #424a4c;
 }
 
+/*position of model content depends of screen*/
 
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+@media (min-width: 700px) and (max-width: 850px) {
+	.modal-content {
+		margin-left: 15%;
+	}
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+@media (min-width: 480px) and (max-width: 700px) {
+	.modal-content {
+		margin-left: 5%;
+	}
+}
+
+@media (min-width: 0) and (max-width: 480px) {
+	.modal-content {
+		width: 100%;
+		margin: 0;
+	}
 }
