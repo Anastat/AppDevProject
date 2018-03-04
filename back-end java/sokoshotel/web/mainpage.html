@@ -62,16 +62,16 @@
 				<span class="close">&times;</span>
 				<ul class="button-group">
 
-					<li><button class="button notDisabled" id="newButton" value="1" type="button" onclick="hideNew()">
+					<li><button class="button notDisabled" id="newButton" value="1" type="button">
                     <img src="./Icons/Add.png" alt="add"><br>
  NEW</button>
 					</li>
 					<li>
-						<button class="button disabled" id="inProcess" value="2" type="button" onclick="hideInProcess()"><img src="./Icons/inProcess.png" alt="icon"><br>
+						<button class="button disabled" id="inProcess" value="2" type="button"><img src="./Icons/inProcess.png" alt="icon"><br>
                     IN PROCESS</button></li>
-					<li><button class="button disabled" id="done" value="3" type="button" onclick="hideDone()"><img src="./Icons/done.png" alt="done"><br>
+					<li><button class="button disabled" id="done" value="3" type="button"><img src="./Icons/done.png" alt="done"><br>
                     DONE</button></li>
-					<li><button class="button disabled" id="cancelled" value="4" type="button" onclick="hideCancelled()"><img src="./Icons/cancelled.png" alt="cancelled"><br>
+					<li><button class="button disabled" id="cancelled" value="4" type="button"><img src="./Icons/cancelled.png" alt="cancelled"><br>
                     CANCELLED</button></li>
 				</ul>
 				<label id="dateLabel">Due date</label>
@@ -96,7 +96,7 @@
 						<option value="4">Main hall</option>
 					</select>
 				<label id="titleLabel">Title</label>
-				<input type="text" id="titleInput">
+				<textarea type="text" id="titleInput"></textarea>
 				<label id="detailsLabel">Details</label>
 				<textarea id="detailsInput"></textarea>
 				<label id="attachmentLabel">Attachment</label>
@@ -119,7 +119,7 @@
 			modal.style.display = "none";
 		}
 
-		function hideNew() {
+		/*function hideNew() {
 			var a = document.getElementById("newButton");
 			var b = document.getElementById("inProcess");
 			var c = document.getElementById("cancelled");
@@ -165,7 +165,7 @@
 			b.className = "button disabled";
 			c.className = "button disabled";
 			d.className = "button notDisabled";
-		}
+		}*/
 
 	</script>
 </body>
