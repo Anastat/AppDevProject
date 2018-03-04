@@ -203,8 +203,8 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     }
 
     @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Path("taskID{id}")
+    @Produces({MediaType.APPLICATION_JSON})
     public Tasks find(@PathParam("id") Integer id) {
         return super.find(id);
     }

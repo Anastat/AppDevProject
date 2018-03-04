@@ -1,3 +1,5 @@
+/*Style for buttons in task form*/
+
 .button-group,
 .button-group li {
 	display: inline-block;
@@ -17,9 +19,6 @@
 
 }
 
-.button-group #newButton {}
-
-
 .button-group .button:disabled {
 	box-shadow: 8px 8px 8px 0px #ccc;
 	background-color: white;
@@ -36,8 +35,8 @@
 }
 
 .notDisabled {
-	box-shadow: inset -1px -1px 19px 0px #ccc;
-	border: 1px solid #a1a1a1;
+	box-shadow: inset -1px -1px 30px 0px #ccc;
+        background-color: #f5f0e8;
 }
 
 .disabled {

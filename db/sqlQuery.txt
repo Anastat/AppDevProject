@@ -8,3 +8,12 @@ ALTER TABLE `tasks`
 ALTER TABLE `tasks`
 	CHANGE COLUMN `detils` `details` VARCHAR(50) NULL DEFAULT '0' AFTER `place`;
 
+//drop default value for details in task table
+ALTER TABLE `tasks`
+	ALTER `details` DROP DEFAULT,
+	ALTER `attachment` DROP DEFAULT;
+ALTER TABLE `tasks`
+	CHANGE COLUMN `details` `details` VARCHAR(50) NULL AFTER `place`,
+	CHANGE COLUMN `attachment` `attachment` VARCHAR(50) NULL AFTER `details`;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='sokosweb';
+

@@ -27,7 +27,6 @@ body {
 	width: 100%;
 	height: 100%;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
 	grid-template-areas: "nav nav nav nav" "content content content aside" "content content content aside" "content content content aside";
 	z-index: -1;
 }
@@ -69,9 +68,9 @@ nav {
 }
 
 .align-center {
+        padding-top: 5%;
 	width: 100%;
 	height: 100%;
-	position: relative;
 	margin: auto;
 	grid-area: content;
 }
@@ -88,35 +87,40 @@ aside .button, .align-center .button {
 	box-shadow: 4px 4px 5px 0px rgba(50, 50, 50, 0.75);
 	border-radius: 7px;
 }
-
+/*radio buttons all, new, done etc.*/
 .float-right {
-	text-align: right;
+    padding: 10px;
+    position: relative;
+    text-align: center;
 }
 
-
-
+/*content from database, displays tasks*/
 .boxed {
-	border: none;
-	width: 100%;
-	height: 75%;
-	overflow: auto;
+    position: relative;
+    border: none;
+    width: 80%;
+    height: 75%;
+    overflow: auto;
+    margin: auto;
+    cursor: pointer;
 }
-
+/*button Add new task*/
 .wrapper {
-	padding-top: 2%;
-	text-align: center;
+    position: relative;
+    padding-top: 10px;
+    text-align: center;
 }
 
 aside {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
-	vertical-align: center;
 	grid-area: aside;
 	align-content: center;
+        padding-top: 20%;
 }
 
 aside ul {
+	
 	list-style: none;
 }
 aside ul li {

@@ -27,6 +27,15 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
+     //clear all inner html of task input, if don't clear it displays data of last clicked task
+    document.getElementById("taskID").innerHTML = "";
+    document.getElementById("dateInput").value = "";
+    document.getElementById("timeInput").value = "";
+    document.getElementById("departmentSelect").value = "";
+    document.getElementById("placeSelect").value = "";
+    document.getElementById("titleInput").innerHTML = "";
+    document.getElementById("detailsInput").innerHTML = "";
+    //set form visible
     modal.style.display = "block";
 }
 
@@ -38,6 +47,7 @@ span.onclick = function() {
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
+       
         modal.style.display = "none";
     }
 }
