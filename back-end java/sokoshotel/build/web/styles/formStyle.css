@@ -1,10 +1,10 @@
-@import "buttonStyle.css";
+@import "buttonStyle.css"; /*import style for buttons*/
 
+/*Style for task form*/
 .noteForm {
-	position: relative;
 	display: grid;
-	grid-template-columns: repeat(4, 24%);
-	grid-template-rows: repeat(16, 30px);
+	grid-template-columns: repeat(4, 23%);
+	grid-template-rows: repeat(17, 30px);
 	text-align: left;
 	font-size: 0.75rem;
 	grid-row-gap: 5px;
@@ -12,87 +12,117 @@
 	font-family: Arial;
 }
 
-.noteForm input:not(#fileInput), select {
+.noteForm input:not(#fileInput), select, textarea {
 	border: none;
 	box-shadow: 0px 8px 8px 0px #ccc;
+	padding-left: 5px;
 }
 
-form label {
+.noteForm label, output {
 	padding-top: 12px;
 	font-size: 1rem;
 }
 
+/*Location of form's content on grid layout*/
+#taskIdLabel {
+	grid-column: 1 / 1;
+	grid-row: 1 / 1;
+}
+
+#taskID {
+	grid-column: 2 / 2;
+	grid-row: 1 / 1;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	font-size: 28px;
+	font-weight: bold;
+	grid-column: 4 / 4;
+	grid-row: 1 / 1;
+	text-align: right;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 #dateLabel {
 	grid-column: 1 / 1;
-	grid-row: 3 / 3;
+	grid-row: 4 / 4;
 	
 }
 #dateInput {
 	grid-column: 1 / span 2;
-	grid-row: 4 / 4;
+	grid-row: 5 / 5;
 }
 #timeLabel {
 	grid-column: 3 / 3;
-	grid-row: 3 / 3;
+	grid-row: 4 / 4;
 }
 #timeInput {
 	grid-column: 3 / 3;
-	grid-row: 4 / 4;
+	grid-row: 5 / 5;
 }
 #departmentLabel {
 	grid-column: 1 / span 2;
-	grid-row: 5 / 5;
+	grid-row: 6 / 6;
 }
 #departmentSelect {
 	grid-column: 1 / span 2;
-	grid-row: 6 / 6;
+	grid-row: 7 / 7;
 }
 #placeLabel {
 	grid-column: 3 / 3;
-	grid-row: 5 / 5;
+	grid-row: 6 / 6;
 }
 #placeSelect {
 	grid-column: 3 / 3;
-	grid-row: 6 / 6;
+	grid-row: 7 / 7;
 }
 #titleLabel {
 	grid-column: 1 / 1;
-	grid-row: 7 / 7;
+	grid-row: 8 / 8;
 }
 #titleInput {
 	grid-column: 1 / span 4;
-	grid-row: 8 / 8;
+	grid-row: 9 / 9;
 }
 #detailsLabel {
 	grid-column: 1 / 1;
-	grid-row: 9 / 9;
+	grid-row: 10 / 10;
 }
 #detailsInput {
 	grid-column: 1 / span 4;
-	grid-row: 10 / span 3;
+	grid-row: 11 / span 3;
+	padding-top: 5px;
 }
 #attachmentLabel {
 	grid-column: 1 / span 2;
-	grid-row: 13 / 13;
+	grid-row: 14 / 14;
 }
 #fileInput {
 	grid-column: 1 / span 2;
-	grid-row: 14 / 14;
+	grid-row: 15 / 15;
 	border: 0;
 }
 #historyLabel {
 	grid-column: 3 / span 2;
-	grid-row: 13 / 13;
+	grid-row: 14 / 14;
 }
 #historyOutput {
 	grid-column: 3 / span 2;
-	grid-row: 14 / 14;
+	grid-row: 15 / 15;
 }
 #saveButton {
 	grid-column: 2 / 2;
-	grid-row: 16 / 16;
+	grid-row: 17 / 17;
 }
 #cancelButton {
 	grid-column: 3 / 3;
-	grid-row: 16 / 16;
+	grid-row: 17 / 17;
 }

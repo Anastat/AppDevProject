@@ -3,9 +3,16 @@
 // - displaying data of clicked task in form 
 
 document.addEventListener("DOMContentLoaded", function (event) {
+    
+        function getCookie(name)
+        {
+          var re = new RegExp(name + "=([^;]+)");
+          var value = re.exec(document.cookie);
+          return (value != null) ? unescape(value[1]) : null;
+        }    
 
 	let urlTaskStatus = $('.float-right input[type=radio]:checked').val();
-	const url = `webresources/tasksrest/${urlTaskStatus}`;
+	let url = `webresources/tasksrest/${urlTaskStatus}/${getCookie("username")}`;
 
 
 	//source of the image depends of taskStatus
@@ -25,13 +32,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 	//create div with task in it
 	function taskTemplate(task) {
+            //console.log(task);
 		return `
 		<div class="taskInList" id="taskID${task.taskID}">
-		<img src=${imgSrc(task.taskStatus.taskStatusID)}>
+		<img src=${imgSrc(task.taskstatus)}>
 		<h3>${task.title}</h3>
-		<p class="placeList"><strong>Place: </strong>${task.place.placeName}</p>
-		<p class="dateList"><strong>Due date: </strong>${task.dueDate}</p>
-		<p class="timeList"><strong>Due time: </strong>${task.dueTime}</p>
+		<p class="placeList"><strong>Place: </strong>${task.place}</p>
+		<p class="dateList"><strong>Due date: </strong>${task.duedate}</p>
+		<p class="timeList"><strong>Due time: </strong>${task.duetime}</p>
 		</div>
 		`;
 	}
@@ -60,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 			task.addEventListener('click', function () {
 				let urlForTaskId = task.getAttribute("id");
 				urlClickedTask = `webresources/tasksrest/${urlForTaskId}`;
-
 				fetch(urlClickedTask)
 					.then(response => response.json())
 					.then(json => taskResponse(json))
@@ -137,6 +144,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	$('.float-right input[type=radio]').on('change', function () {
 		console.log(this.value);
 		urlTaskStatus = this.value;
+                url = `webresources/tasksrest/${urlTaskStatus}/${getCookie("username")}`;
+                
+                fetch(url)
+		.then(response => response.json()) //first we get all tasks from database
+		.then(json => listTasks(json)) //display response on page
+		.then(result => clickedtask()) //waiting for clicked task after task is loaded from database 
+		.catch(error => (console.log("Fetch crashed due to " + error)));
 	});
       
 });

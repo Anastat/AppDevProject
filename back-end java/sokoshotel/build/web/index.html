@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title>Login Page</title>
 	<link href="styles/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="js/script2.js"></script>
-    
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="js/script2.js"></script>
+
 
 </head>
-	<body>
-    <div class="row">
-        <div class="">
-            <div class="wrap">
-            <p style="text-align:center;"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/TF17_vantaa_hotel_logo_400x140_20170120.png" alt="Logo"></p>
-                <p class="form-title"></p>
-                <form class="login" method="post" action="webresources/users/login" onsubmit="esa()">
-                <p id="wrong" class="dynamic-content">Wrong username or password!</p>
-                <input type="text" placeholder="Username" name="username" id="names"/>
-                <input type="password" placeholder="Password" name="password" />
-                <input type="submit" value="Sign In" />
-                </form>
-            </div>
-        </div>
-    </div>
-            
-            <script>
-             function esa(){
-                 document.cookie = "username="+document.getElementById("names").value; 
-             }            
-            </script>
-	</body>
+
+<body>
+	<div class="row">
+	</div>
+	<div class="wrap">
+		<p style="text-align:center;"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/TF17_vantaa_hotel_logo_400x140_20170120.png" alt="Logo"></p>
+		<p class="form-title"></p>
+		<form class="login" method="post" action="webresources/users/login" onsubmit="esa()">
+			<p id="wrong" class="dynamic-content">Wrong username or password!</p>
+			<input type="text" placeholder="Username" name="username" id="names" />
+			<input type="password" placeholder="Password" name="password" />
+			<input type="submit" value="Sign In" />
+		</form>
+	</div>
+
+
+
+	<script>
+		function esa() {
+			document.cookie = "username=" + document.getElementById("names").value;
+		}
+
+	</script>
+</body>
+
 </html>

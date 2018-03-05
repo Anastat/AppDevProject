@@ -5,8 +5,8 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 	const noteInput = document.querySelector(".noteForm");
-	//const url = "http://localhost:8080/sokoshotel/webresources/tasksrest/addNewNote";
-        const url = "http://localhost:46419/sokoshotel/webresources/tasksrest/addNewNote";
+	const url = "http://localhost:8080/sokoshotel/webresources/tasksrest/addNewNote";
+        //const url = "http://localhost:46419/sokoshotel/webresources/tasksrest/addNewNote";
 	let note = {};
 	let departmentid = {};
 	let placeid = {};
@@ -49,12 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
 				"Content-type": "application/json; charset=UTF-8"
 			}
 		};
-
+                
 		fetch(url, init)
 			.then(response => response.json())
 			.then(json => console.log("Note saved: " + JSON.stringify(json)))
 			.catch(error => console.log("Fetch crashed due to " + error));
-		//console.log(init);
+		
 	});
 
 	//Task status buttons
