@@ -162,6 +162,18 @@ aside ul li {
 	box-shadow: 0 0 5px 5px #424a4c;
 }
 
+.modal-content2 {
+	background-color: #f5f0e8;
+	padding: 20px;
+	margin-left: 35%;
+	border: 1px solid #888;
+	width: 200px;
+	height: 430px;
+	overflow: auto;
+	/* Enable scroll if needed */
+	box-shadow: 0 0 5px 5px #424a4c;
+}
+
 /*position of model content depends of screen*/
 
 @media (min-width: 700px) and (max-width: 850px) {

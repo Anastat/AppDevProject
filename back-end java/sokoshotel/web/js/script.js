@@ -18,9 +18,12 @@ var username = document.getElementById('username');
 
 // Get the modal
 var modal = document.getElementById('myModal');
+var userAddModal = document.getElementById('userAddModal');
+userAddModal.style.display = "none";
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
+var addBtn = document.getElementById("addUserBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -39,6 +42,11 @@ btn.onclick = function() {
     modal.style.display = "block";
 }
 
+addBtn.onclick = function () {
+   userAddModal.style.display = "block";
+   console.log(userAddModal);
+}
+
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
@@ -50,10 +58,14 @@ window.onclick = function(event) {
        
         modal.style.display = "none";
     }
+    if (event.target == userAddModal) {
+       
+        userAddModal.style.display = "none";
+    }
 }
 
 
-//Hiding button if no rights
+//Hiding buttons if no rights
 var newTaskButton = document.getElementById('myBtn');
 const url = 'webresources/users/getRights/'+username.innerHTML;
 console.log(url);
@@ -62,10 +74,53 @@ console.log(url);
   .then(function(data) {      
       if (data == 2) {
       	newTaskButton.style.display = "none";
+        addBtn.style.display = "none";
       }
     })
 
   .catch(function(error) {
     console.log(error);
   });   
+
+
+
+const submitButtonn = document.querySelector("#saveButtonAdduser");
+const formInput = document.querySelector(".formUser");
+let note = {};
+formInput.addEventListener("input", function () {
+    const username = formInput.querySelector("#usernameInput").value;
+    const password = formInput.querySelector("#passwordInput").value;
+    const firstname = formInput.querySelector("#firstnameInput").value;
+    const lastname = formInput.querySelector("#lastnameInput").value;
+    const department = formInput.querySelector("#departmentSelectt").value;
+    const rights = formInput.querySelector("#rightSelectt").value;
+
+
+    note.username = username;
+    note.password = password;
+    note.firstname = firstname;
+    note.department = department;
+    note.rights = rights;
+
+    console.log("rikki");
+    console.log(note);
+  });
+
+submitButtonn.addEventListener("click", function () {
+  const url = "http://localhost:8080/sokoshotel/webresources/tasksrest/newuser";
+
+    console.log(JSON.stringify(note));
+    note = JSON.stringify(note);
+    const init = {
+      method: "POST",
+      body: note,
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    };
+    fetch(url, init)
+      .then(response => response.json())
+      .then(json => console.log("Note saved: " + JSON.stringify(json)))
+      .catch(error => console.log("Fetch crashed due to " + error));
+});
 }

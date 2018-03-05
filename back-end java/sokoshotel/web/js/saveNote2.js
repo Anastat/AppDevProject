@@ -34,6 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		note.place = placeid;
 		note.details = details;
 		note.attachment = attachment;
+
+		console.log(note);
+		console.log(taskStatus);
 	});
 
 	//post the data to server
