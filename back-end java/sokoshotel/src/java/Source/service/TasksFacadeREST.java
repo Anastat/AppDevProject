@@ -198,6 +198,122 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         return "test";
     }
     
+    @GET
+    @Path("sortnewmanager")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String sortByNewForManager() {
+        List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        List<Tasks> valid = new ArrayList();
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+        for (Tasks result : results) {
+            if (result.getTaskStatus().getStatusName().equals("New")) {
+                valid.add(result);
+            }
+        }
+        for (Tasks tasks : valid) {
+            obj.put("taskID", tasks.getTaskID());
+            obj.put("duedate", tasks.getDueDate());
+            obj.put("duetime", tasks.getDueTime());
+            obj.put("department", tasks.getDepartment().getDepartmentID());
+            obj.put("title", tasks.getTitle());
+            obj.put("place", tasks.getPlace().getPlaceName());
+            obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
+            obj.put("details", tasks.getDetails());
+            obj.put("attachment", tasks.getAttachment());
+            arr.put(obj);          
+            obj = new JSONObject();           
+        }
+        return arr.toString();
+    }
+    
+    @GET
+    @Path("sortprocessmanager")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String sortByProcessForManager() {
+        List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        List<Tasks> valid = new ArrayList();
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+        for (Tasks result : results) {
+            if (result.getTaskStatus().getStatusName().equals("In process")) {
+                valid.add(result);
+            }
+        }
+        for (Tasks tasks : valid) {
+            obj.put("taskID", tasks.getTaskID());
+            obj.put("duedate", tasks.getDueDate());
+            obj.put("duetime", tasks.getDueTime());
+            obj.put("department", tasks.getDepartment().getDepartmentID());
+            obj.put("title", tasks.getTitle());
+            obj.put("place", tasks.getPlace().getPlaceName());
+            obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
+            obj.put("details", tasks.getDetails());
+            obj.put("attachment", tasks.getAttachment());
+            arr.put(obj);          
+            obj = new JSONObject();           
+        }
+        return arr.toString();
+    }
+    
+    @GET
+    @Path("sortdonemanager")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String sortByDoneForManager() {
+        List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        List<Tasks> valid = new ArrayList();
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+        for (Tasks result : results) {
+            if (result.getTaskStatus().getStatusName().equals("Done")) {
+                valid.add(result);
+            }
+        }
+        for (Tasks tasks : valid) {
+            obj.put("taskID", tasks.getTaskID());
+            obj.put("duedate", tasks.getDueDate());
+            obj.put("duetime", tasks.getDueTime());
+            obj.put("department", tasks.getDepartment().getDepartmentID());
+            obj.put("title", tasks.getTitle());
+            obj.put("place", tasks.getPlace().getPlaceName());
+            obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
+            obj.put("details", tasks.getDetails());
+            obj.put("attachment", tasks.getAttachment());
+            arr.put(obj);          
+            obj = new JSONObject();           
+        }
+        return arr.toString();
+    }
+    
+    @GET
+    @Path("sortcancelledmanager")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String sortByCancelledForManager() {
+        List<Tasks> results = em.createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        List<Tasks> valid = new ArrayList();
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+        for (Tasks result : results) {
+            if (result.getTaskStatus().getStatusName().equals("Cancelled")) {
+                valid.add(result);
+            }
+        }
+        for (Tasks tasks : valid) {
+            obj.put("taskID", tasks.getTaskID());
+            obj.put("duedate", tasks.getDueDate());
+            obj.put("duetime", tasks.getDueTime());
+            obj.put("department", tasks.getDepartment().getDepartmentID());
+            obj.put("title", tasks.getTitle());
+            obj.put("place", tasks.getPlace().getPlaceName());
+            obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
+            obj.put("details", tasks.getDetails());
+            obj.put("attachment", tasks.getAttachment());
+            arr.put(obj);          
+            obj = new JSONObject();           
+        }
+        return arr.toString();
+    }      
+    
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})

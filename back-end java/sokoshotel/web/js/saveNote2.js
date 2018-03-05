@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	let taskstatusID = {};
 
 	//Reading input from the note form 
-	noteInput.addEventListener("input", function () {
+	noteInput.addEventListener("change", function () {
 		const taskStatus = noteInput.querySelector("button.notDisabled").value;
 		const dueDate = noteInput.querySelector("#dateInput").value;
 		const dueTime = noteInput.querySelector("#timeInput").value;
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		note.place = placeid;
 		note.details = details;
 		note.attachment = attachment;
+                console.log(note);
 	});
 
 	//post the data to server
