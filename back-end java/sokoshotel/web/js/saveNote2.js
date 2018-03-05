@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	let placeid = {};
 	let taskstatusID = {};
 
+        noteInput.addEventListener("input",updatejson);
+        noteInput.addEventListener("click",updatejson);
 	//Reading input from the note form 
-	noteInput.addEventListener("input", function () {
+	function updatejson() {
 		const taskStatus = noteInput.querySelector("button.notDisabled").value;
 		const dueDate = noteInput.querySelector("#dateInput").value;
 		const dueTime = noteInput.querySelector("#timeInput").value;
@@ -35,9 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		note.details = details;
 		note.attachment = attachment;
 
-		console.log(note);
-		console.log(taskStatus);
-	});
+	};
+
+
 
 	//post the data to server
 	var modal = document.getElementById('myModal');
