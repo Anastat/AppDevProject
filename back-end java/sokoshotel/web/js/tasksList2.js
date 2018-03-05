@@ -80,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	let taskResponse = (task) => {
 		console.log(task);
 		let taskStatus = task.taskStatus.taskStatusID;
-                console.log(taskStatus);
 		switch (taskStatus) {
 			case 1:
 				hideNew();

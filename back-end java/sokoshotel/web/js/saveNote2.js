@@ -49,13 +49,19 @@ document.addEventListener("DOMContentLoaded", function () {
 				"Content-type": "application/json; charset=UTF-8"
 			}
 		};
-                
+                if(document.getElementById("taskID").value !== ""){
+                    const urll = "http://localhost:8080/sokoshotel/webresources/tasksrest/editNote/" + document.getElementById("taskID").value;
+                    fetch(urll, init)
+			.then(response => response.json())
+			.then(json => console.log("Note saved: " + JSON.stringify(json)))
+			.catch(error => console.log("Fetch crashed due to " + error));
+                }else{
 		fetch(url, init)
 			.then(response => response.json())
 			.then(json => console.log("Note saved: " + JSON.stringify(json)))
 			.catch(error => console.log("Fetch crashed due to " + error));
 		
-	});
+	}});
 
 	//Task status buttons
 	let a = document.getElementById("newButton");

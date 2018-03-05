@@ -183,6 +183,22 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     
 
     @POST
+    @Path("editNote/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String editNote(@PathParam("id") int id, Tasks entity) {
+        Tasks old = super.find(id);
+        old.setAttachment(entity.getAttachment());
+        old.setDepartment(entity.getDepartment());
+        old.setDetails(entity.getDetails());
+        old.setDueDate(entity.getDueDate());
+        old.setDueTime(entity.getDueTime());
+        old.setPlace(entity.getPlace());
+        old.setTaskStatus(entity.getTaskStatus());
+        old.setTitle(entity.getTitle());
+        return "test";
+    }
+    
+    @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void create(Tasks entity) {
