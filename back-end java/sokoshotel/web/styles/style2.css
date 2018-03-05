@@ -99,7 +99,7 @@ aside .button, .align-center .button {
     position: relative;
     border: none;
     width: 80%;
-    height: 70%;
+    height: 600px;
     overflow: auto;
     margin: auto;
     cursor: pointer;
