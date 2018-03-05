@@ -312,7 +312,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj = new JSONObject();           
         }
         return arr.toString();
-    }      
+    }
     
     @POST
     @Override
