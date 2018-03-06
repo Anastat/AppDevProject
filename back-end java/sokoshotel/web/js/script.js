@@ -11,7 +11,7 @@ if(document.cookie === "{}"){
     document.cookie = "supersecret" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 };
-    
+
 var username = document.getElementById('username');
 
 
@@ -86,6 +86,9 @@ console.log(url);
       if (data == 2) {
       	newTaskButton.style.display = "none";
         addBtn.style.display = "none";
+      }
+      if(data == 1){
+          addBtn.style.display = "none";
       }
     })
 

@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		note.place = placeid;
 		note.details = details;
 		note.attachment = attachment;
+                console.log(attachment);
 
 	};
 
