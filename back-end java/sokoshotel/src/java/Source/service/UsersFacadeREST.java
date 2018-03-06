@@ -51,7 +51,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
     @POST
     @Override
     @Path("newuser")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.APPLICATION_JSON)
     public void create(Users entity) {
         super.create(entity);
     }

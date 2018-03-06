@@ -21,6 +21,7 @@
 				<a class="active" href="#home"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/TF17_vantaa_hotel_logo_400x140_20170120.png" alt="Logo" style="width: 40%; height: 40%; float: left;"></a>
 				<a style="float: right;" id="username">Username</a>
 				<img class="icon" src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/user_icon.png" alt="icon">
+				<button type="button" id="addUserBtn">add user</button>
 			</div>
 
 		</nav>
@@ -107,6 +108,52 @@
 				<input type="button" class="templateButtons" id="cancelButton" value="CANCEL" onclick="hideModal()">
 			</form>
 		</div>
+	</div>
+
+
+		<div id="userAddModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content2">
+
+			<form class="formUser" id="addUser">
+
+				<label id="username">Username</label>
+				<input type="text" id="usernameInput">
+				<p></p>
+				<label id="password">Password</label>
+				<input type="text" id="passwordInput">
+				<p></p>
+				<label id="firstname">First name</label>
+				<input type="text" id="firstnameInput">
+				<p></p>
+				<label id="lastname">Last name</label>
+				<input type="text" id="lastnameInput">
+				<p></p>
+				<label id="department">Department</label>
+				<p></p>
+				<select id="departmentSelectt">
+  					<option value="1">Management</option>
+					<option value="2">Front Office</option>
+  					<option value="3">Housekeeping</option>
+					<option value="4">Guest Service</option>
+					<option value="5">Food and Beverage</option>
+					<option value="6">Engineering and Maintenance</option>
+					<option value="7">Other</option>
+				</select>
+				<p></p>
+				<label id="rights">Rights</label>
+				<p></p>
+					<select id="rightSelectt">
+  					<option value="1">Manager</option>
+					<option value="2">User</option>
+				</select>
+				<p></p>
+
+				<input type="submit" class="templateButtons" id="saveButtonAdduser" value="SAVE">
+				<input type="button" class="templateButtons" id="cancelButton" value="CANCEL" onclick="hideModal()">
+			</form>
+		</div>
 
 	</div>
 	<script>
@@ -114,10 +161,13 @@
 
 		//Hide modal after cancel button pressed
 		var modal = document.getElementById('myModal');
+		var modal2 = document.getElementById('userAddModal');
 
 		function hideModal() {
 			modal.style.display = "none";
+			modal2.style.display = "none";
 		}
+
 
 		/*function hideNew() {
 			var a = document.getElementById("newButton");

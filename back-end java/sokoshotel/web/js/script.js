@@ -87,6 +87,8 @@ console.log(url);
 const submitButtonn = document.querySelector("#saveButtonAdduser");
 const formInput = document.querySelector(".formUser");
 let note = {};
+let departmentid = {};
+let rightsid = {};
 formInput.addEventListener("input", function () {
     const username = formInput.querySelector("#usernameInput").value;
     const password = formInput.querySelector("#passwordInput").value;
@@ -95,19 +97,21 @@ formInput.addEventListener("input", function () {
     const department = formInput.querySelector("#departmentSelectt").value;
     const rights = formInput.querySelector("#rightSelectt").value;
 
-
+    departmentid.departmentID = parseInt(department);
+    rightsid.rightsID = parseInt(rights);
     note.username = username;
     note.password = password;
     note.firstname = firstname;
-    note.department = department;
-    note.rights = rights;
+    note.surname = lastname;
+    note.department = departmentid;
+    note.rights = rightsid;
 
     console.log("rikki");
     console.log(note);
   });
 
 submitButtonn.addEventListener("click", function () {
-  const url = "http://localhost:8080/sokoshotel/webresources/tasksrest/newuser";
+  const urll = "http://localhost:8080/sokoshotel/webresources/users/newuser";
 
     console.log(JSON.stringify(note));
     note = JSON.stringify(note);
@@ -118,7 +122,8 @@ submitButtonn.addEventListener("click", function () {
         "Content-type": "application/json; charset=UTF-8"
       }
     };
-    fetch(url, init)
+    console.log(note);
+    fetch(urll, init)
       .then(response => response.json())
       .then(json => console.log("Note saved: " + JSON.stringify(json)))
       .catch(error => console.log("Fetch crashed due to " + error));
