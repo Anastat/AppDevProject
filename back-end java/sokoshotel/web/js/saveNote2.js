@@ -45,8 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	var modal = document.getElementById('myModal');
 	const submitButton = document.querySelector("#saveButton");
 	submitButton.addEventListener("click", function () {
-                    var cookie = document.cookie;
-                //console.log(cookie);
                 //console.log(JSON.stringify(note));
 		note = JSON.stringify(note);
 		const init = {
@@ -62,16 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			.then(response => response.json())
 			.then(json => console.log("Note saved: " + JSON.stringify(json)))
 			.catch(error => console.log("Fetch crashed due to " + error));
-                document.cookie = cookie;
-                console.log(document.cookie);
                 }else{
 		fetch(url, init)
 			.then(response => response.json())
 			.then(json => console.log("Note saved: " + JSON.stringify(json)))
 			.catch(error => console.log("Fetch crashed due to " + error));
-                document.cookie = cookie;
-                console.log(document.cookie);
-		
 	}});
 
 	//Task status buttons
