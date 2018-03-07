@@ -8,6 +8,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+
 /*div for the blur effect of the background-image*/
 .blur::before {
 	content: "";
@@ -67,6 +68,16 @@ nav {
 .topnav a.active {
 	background-color: #f5f0e8;
 	color: black;
+}
+
+a:link {
+	text-decoration: underline;
+}
+
+.logoutstyle {
+	position: absolute;
+	bottom: 0px;
+	right: 3px;
 }
 
 .icon {
