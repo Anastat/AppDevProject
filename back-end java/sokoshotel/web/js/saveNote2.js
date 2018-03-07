@@ -6,7 +6,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const noteInput = document.querySelector(".noteForm");
 	//const url = "webresources/tasksrest/addNewNote";
-        const url = "http://localhost:46419/sokoshotel/webresources/tasksrest/addNewNote";
+        const url = "http://10.114.32.70:8080/sokoshotel/webresources/tasksrest/addNewNote";
 	let note = {};
 	let departmentid = {};
 	let placeid = {};
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		};
                 if(document.getElementById("taskID").value !== ""){
-                    const urll = "http://localhost:46419/sokoshotel/webresources/tasksrest/editNote/" + document.getElementById("taskID").value;
+                    const urll = "http://10.114.32.70:8080/sokoshotel/webresources/tasksrest/editNote/" + document.getElementById("taskID").value;
                     fetch(urll, init)
 			.then(response => response.json())
 			.then(json => console.log("Note saved: " + JSON.stringify(json)))
