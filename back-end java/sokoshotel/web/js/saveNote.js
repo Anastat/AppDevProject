@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 	
     const noteInput = document.querySelector(".noteForm");
-    const url = "http://localhost:8080/sokoshotel/webresources/tasksrest/addNewNote";
-	
+    //const url = "http://localhost:8080/sokoshotel/webresources/tasksrest/addNewNote";
+    
+    
     let note = {};
     let departmentid = {};
     let placeid = {};

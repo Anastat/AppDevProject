@@ -19,10 +19,10 @@
 
 }
 
-.button-group .button:disabled {
+/*.button-group .button:disabled {
 	box-shadow: 8px 8px 8px 0px #ccc;
 	background-color: white;
-}
+}*/
 
 .button-group .button {
 	border: 1px solid #c2c2c2;

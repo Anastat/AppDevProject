@@ -18,19 +18,19 @@
 	<div class="content">
 		<nav>
 			<div class="topnav">
-				<a class="active" href="#home"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/TF17_vantaa_hotel_logo_400x140_20170120.png" alt="Logo" style="width: 40%; height: 40%; float: left;"></a>
-				<a style="float: right;" id="username">Username</a>
-				<img class="icon" src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/user_icon.png" alt="icon">
+				<a class="active" href="#home"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/TF17_vantaa_hotel_logo_400x140_20170120.png" alt="Logo"></a>
+				<a id="username">Username</a>
+				<img class="icon" src="./Icons/user_icon.png" alt="icon">
 			</div>
 
 		</nav>
 		<div class="align-center">
 			<form action="submit" class="float-right">
-                            <label><input type="radio" name="option" value="taskListAll" checked> <b>All</b></label>
-                            <label><input type="radio" name="option" value="sortnew"> <b>New</b></label>
-                            <label><input type="radio" name="option" value="sortprocess"> <b>In progress</b></label>
-                            <label><input type="radio" name="option" value="sortdone"> <b>Done</b></label>
-                            <label><input type="radio" name="option" value="sortcancelled"> <b>Cancelled</b></label>
+				<label><input type="radio" name="option" value="taskListAll" checked> <b>All</b></label>
+				<label><input type="radio" name="option" value="sortnew"> <b>New</b></label>
+				<label><input type="radio" name="option" value="sortprocess"> <b>In progress</b></label>
+				<label><input type="radio" name="option" value="sortdone"> <b>Done</b></label>
+				<label><input type="radio" name="option" value="sortcancelled"> <b>Cancelled</b></label>
 			</form>
 
 			<div id="tasks-list" class="boxed">
@@ -40,14 +40,14 @@
 			</div>
 		</div>
 		<aside>
-			<ul >
-				<li><button type="button" class="button">ALL</button></li>
-				<li><button type="button" class="button">FRONT OFFICE</button></li>
-				<li><button type="button" class="button">HOUSEKEEPING</button></li>
-				<li><button type="button" class="button">GUEST SERVICE</button></li>
-				<li><button type="button" class="button">FOOD AND BEVERAGE</button></li>
-				<li><button type="button" class="button">ENGINEERING AND MAINTENANCE</button></li>
-				<li><button type="button" class="button">OTHER DEPARTMENTS</button></li>
+			<ul class="departmentList">
+				<li><button type="button" id="AllDepartments" class="button activeDepartment">ALL</button></li>
+				<li><button type="button" id="frontOffice" class="button disabledDep">FRONT OFFICE</button></li>
+				<li><button type="button" id="housekeeping" class="button disabledDep">HOUSEKEEPING</button></li>
+				<li><button type="button" id="guestservice" class="button disabledDep">GUEST SERVICE</button></li>
+				<li><button type="button" id="food" class="button disabledDep">FOOD AND BEVERAGE</button></li>
+				<li><button type="button" id="engineering" class="button disabledDep">ENGINEERING AND MAINTENANCE</button></li>
+				<li><button type="button" id="other" class="button disabledDep">OTHER DEPARTMENTS</button></li>
 			</ul>
 		</aside>
 	</div>
@@ -96,7 +96,7 @@
 						<option value="4">Main hall</option>
 					</select>
 				<label id="titleLabel">Title</label>
-				<textarea type="text" id="titleInput"></textarea>
+				<textarea id="titleInput"></textarea>
 				<label id="detailsLabel">Details</label>
 				<textarea id="detailsInput"></textarea>
 				<label id="attachmentLabel">Attachment</label>
@@ -110,62 +110,12 @@
 
 	</div>
 	<script>
-		//Save button functionality
-
 		//Hide modal after cancel button pressed
 		var modal = document.getElementById('myModal');
 
 		function hideModal() {
 			modal.style.display = "none";
 		}
-
-		/*function hideNew() {
-			var a = document.getElementById("newButton");
-			var b = document.getElementById("inProcess");
-			var c = document.getElementById("cancelled");
-			var d = document.getElementById("done");
-			console.log(document.getElementById("newButton").value);
-			a.className = "button notDisabled";
-			b.className = "button disabled";
-			c.className = "button disabled";
-			d.className = "button disabled";
-		}
-
-		function hideInProcess() {
-			var a = document.getElementById("newButton");
-			var b = document.getElementById("inProcess");
-			var c = document.getElementById("cancelled");
-			var d = document.getElementById("done");
-			console.log(document.getElementById("inProcess").value);
-			a.className = "button disabled";
-			b.className = "button notDisabled";
-			c.className = "button disabled";
-			d.className = "button disabled";
-		}
-
-		function hideCancelled() {
-			var a = document.getElementById("newButton");
-			var b = document.getElementById("inProcess");
-			var c = document.getElementById("cancelled");
-			var d = document.getElementById("done");
-			console.log(document.getElementById("cancelled").value);
-			a.className = "button disabled";
-			b.className = "button disabled";
-			c.className = "button notDisabled";
-			d.className = "button disabled";
-		}
-
-		function hideDone() {
-			var a = document.getElementById("newButton");
-			var b = document.getElementById("inProcess");
-			var c = document.getElementById("cancelled");
-			var d = document.getElementById("done");
-			console.log(document.getElementById("done").value);
-			a.className = "button disabled";
-			b.className = "button disabled";
-			c.className = "button disabled";
-			d.className = "button notDisabled";
-		}*/
 
 	</script>
 </body>

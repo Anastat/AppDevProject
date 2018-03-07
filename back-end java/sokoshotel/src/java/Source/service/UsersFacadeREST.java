@@ -67,7 +67,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
             if (results.get(0).getPassword().equals(pw)) {
                 URL url;
                 try {
-                    url = new URL("http://localhost:8080/sokoshotel/mainpage.html"); //login succesfull
+                    url = new URL("http://localhost:46419/sokoshotel/mainpage.html"); //login succesfull
                     URI uri = url.toURI();
                     return Response.seeOther(uri).build(); //logged in succesfull
                 } catch (MalformedURLException ex) {
@@ -77,7 +77,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
 
                 URL url;
                 try {
-                    url = new URL("http://localhost:8080/sokoshotel/?dc=wrong"); //wrong password
+                    url = new URL("http://localhost:46419/sokoshotel/?dc=wrong"); //wrong password
                     URI uri = url.toURI();
                     return Response.seeOther(uri).build();//logged in failed
                 } catch (MalformedURLException ex) {
@@ -88,7 +88,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
 
             URL url;
             try {
-                url = new URL("http://localhost:8080/sokoshotel/?dc=wrong"); //wrong username
+                url = new URL("http://localhost:46419/sokoshotel/?dc=wrong"); //wrong username
                 URI uri = url.toURI();
                 return Response.seeOther(uri).build();//logged in failed
             } catch (MalformedURLException ex) {
@@ -110,6 +110,12 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
         return results.getRights().getRightsID();
     }
     
+    @GET
+    @Path("getDepartment/{name}")
+    public int getDepartment(@PathParam("name") String name){
+        Users results = em.createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getSingleResult();
+        return results.getDepartment().getDepartmentID();
+    }
 
     @PUT
     @Path("{id}")
