@@ -62,11 +62,13 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
+
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("New") && result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
+            if (result.getTaskStatus().getStatusName().equals("New") && (result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID() || users.getRights().getRightsID() == 3)) {
                 valid.add(result);
             }
         }
+
         for (Tasks tasks : valid) {
             obj.put("taskID", tasks.getTaskID());
             obj.put("duedate", tasks.getDueDate());
@@ -77,8 +79,8 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
             obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
+            arr.put(obj);
+            obj = new JSONObject();
         }
         return arr.toString();
     }
@@ -92,11 +94,13 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
+
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("In process") && result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
+            if (result.getTaskStatus().getStatusName().equals("In process") && (result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID() || users.getRights().getRightsID() == 3)) {
                 valid.add(result);
             }
         }
+
         for (Tasks tasks : valid) {
             obj.put("taskID", tasks.getTaskID());
             obj.put("duedate", tasks.getDueDate());
@@ -107,8 +111,8 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
             obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
+            arr.put(obj);
+            obj = new JSONObject();
         }
         return arr.toString();
     }
@@ -122,8 +126,9 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
+
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("Done") && result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
+            if (result.getTaskStatus().getStatusName().equals("Done") && (result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID() || users.getRights().getRightsID() == 3)) {
                 valid.add(result);
             }
         }
@@ -137,8 +142,8 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
             obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
+            arr.put(obj);
+            obj = new JSONObject();
         }
         return arr.toString();
     }
@@ -153,10 +158,11 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
         for (Tasks result : results) {
-            if (result.getTaskStatus().getStatusName().equals("Cancelled") && result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
+            if (result.getTaskStatus().getStatusName().equals("Cancelled") && (result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID() || users.getRights().getRightsID() == 3)) {
                 valid.add(result);
             }
         }
+
         for (Tasks tasks : valid) {
             obj.put("taskID", tasks.getTaskID());
             obj.put("duedate", tasks.getDueDate());
@@ -167,20 +173,19 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
             obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
+            arr.put(obj);
+            obj = new JSONObject();
         }
         return arr.toString();
     }
-    
+
     @POST
     @Path("addNewNote")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String addNewNote(Tasks t){
+    public String addNewNote(Tasks t) {
         super.create(t);
         return "test";
     }
-    
 
     @POST
     @Path("editNote/{id}")
@@ -197,7 +202,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         old.setTitle(entity.getTitle());
         return "test";
     }
-    
+
     @GET
     @Path("sortnewmanager")
     @Produces(MediaType.APPLICATION_JSON)
@@ -221,12 +226,12 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
             obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
+            arr.put(obj);
+            obj = new JSONObject();
         }
         return arr.toString();
     }
-    
+
     @GET
     @Path("sortprocessmanager")
     @Produces(MediaType.APPLICATION_JSON)
@@ -250,12 +255,12 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
             obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
+            arr.put(obj);
+            obj = new JSONObject();
         }
         return arr.toString();
     }
-    
+
     @GET
     @Path("sortdonemanager")
     @Produces(MediaType.APPLICATION_JSON)
@@ -279,12 +284,12 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
             obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
+            arr.put(obj);
+            obj = new JSONObject();
         }
         return arr.toString();
     }
-    
+
     @GET
     @Path("sortcancelledmanager")
     @Produces(MediaType.APPLICATION_JSON)
@@ -308,12 +313,12 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
             obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
+            arr.put(obj);
+            obj = new JSONObject();
         }
         return arr.toString();
     }
-    
+
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -347,7 +352,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     public List<Tasks> findAll() {
         return super.findAll();
     }
-    
+
     @GET
     @Path("taskListAll/{id}")
     @Produces({MediaType.APPLICATION_JSON})
@@ -357,9 +362,13 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
         List<Tasks> valid = new ArrayList();
         JSONObject obj = new JSONObject();
         JSONArray arr = new JSONArray();
-        for (Tasks result : results) {
-            if (result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
-                valid.add(result);
+        if (users.getRights().getRightsID() == 3) {
+            valid.addAll(results);
+        } else {
+            for (Tasks result : results) {
+                if (result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
+                    valid.add(result);
+                }
             }
         }
         for (Tasks tasks : valid) {
@@ -372,12 +381,12 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
             obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
             obj.put("details", tasks.getDetails());
             obj.put("attachment", tasks.getAttachment());
-            arr.put(obj);          
-            obj = new JSONObject();           
+            arr.put(obj);
+            obj = new JSONObject();
         }
         return arr.toString();
     }
-    
+
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
