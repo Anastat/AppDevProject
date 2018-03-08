@@ -17,13 +17,13 @@
 	</div>
 	<div class="content">
 		<nav>
-			<div class="topnav">
-				<a class="active" href="#home"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/TF17_vantaa_hotel_logo_400x140_20170120.png" alt="Logo" style="width: 40%; height: 40%; float: left;"></a>
+			<div class="topnav" style="position: relative;">
+				<a class="active" href="#home"><img src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/TF17_vantaa_hotel_logo_400x140_20170120.png" alt="Logo" class="picStyle"></a>
 				<a style="float: right;" id="username">Username</a>
 				<img class="icon" src="https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/Icons/user_icon.png" alt="icon">
 				<button type="button" id="addUserBtn">add user</button>
+				<button class="logoutstyle link" id="logout">Log Out</button>
 			</div>
-
 		</nav>
 		<div class="align-center">
 			<form action="submit" class="float-right">
@@ -157,7 +157,7 @@
 
 	</div>
 	<script>
-	
+
 		//Hide modal after cancel button pressed
 		var modal = document.getElementById('myModal');
 		var modal2 = document.getElementById('userAddModal');
