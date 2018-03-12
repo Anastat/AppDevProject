@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 package Source.service;
-
+import Source.Tasks;
+import Source.Users;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -61,4 +65,80 @@ public abstract class AbstractFacade<T> {
         return ((Long) q.getSingleResult()).intValue();
     }
     
+	public String findAllDepartments (String name) {
+       List<Tasks> results = getEntityManager().createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        Users users = getEntityManager().createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getSingleResult();
+        List<Tasks> valid = new ArrayList();
+        for (Tasks result : results) {
+            if (users.getRights().getRightsID()==1) valid.add(result);
+            else if (result.getDepartment().getDepartmentID() == users.getDepartment().getDepartmentID()) {
+                valid.add(result);
+            }
+        }
+        return putDataToReturn(valid);
+    }
+    
+        public String findAllDepartmentParameter (Integer department) {
+        List<Tasks> results = getEntityManager().createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        List<Tasks> valid = new ArrayList();
+        for (Tasks result : results) {
+            if (result.getDepartment().getDepartmentID().equals(department)) valid.add(result);
+            
+        }
+        return putDataToReturn(valid);
+    }    
+    public String findByParameter (String param) {
+        List<Tasks> results = getEntityManager().createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+     
+        List<Tasks> valid = new ArrayList();
+        for (Tasks result : results) {
+            if (result.getTaskStatus().getStatusName().equals(param)){
+                valid.add(result);
+            }
+        }
+        return putDataToReturn(valid);
+    }
+    public String findByParameterDepartment (Integer department, String param) {
+        List<Tasks> results = getEntityManager().createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        List<Tasks> valid = new ArrayList();
+        for (Tasks result : results) {
+            if (result.getTaskStatus().getStatusName().equals(param) && result.getDepartment().getDepartmentID().equals(department)){
+                 valid.add(result);
+            }
+        }
+        return putDataToReturn(valid);
+    }
+    public String findUsersDepartment (String name) {
+        Users user = getEntityManager().createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getSingleResult();
+        return user.getDepartment().getDepartmentID().toString();
+    }
+    
+    public String findAllDepartmentsWithoutParam () {
+        List<Tasks> results = getEntityManager().createNamedQuery("Tasks.findAll", Tasks.class).getResultList();
+        List<Tasks> valid = new ArrayList();
+        for (Tasks result : results) {
+            valid.add(result);
+            
+        }
+        return putDataToReturn(valid);
+    }
+    
+    private String putDataToReturn (List<Tasks> valid) {
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+        for (Tasks tasks : valid) {
+            obj.put("taskID", tasks.getTaskID());
+           obj.put("duedate", tasks.getDueDate());
+            obj.put("duetime", tasks.getDueTime());
+            obj.put("department", tasks.getDepartment().getDepartmentID());
+            obj.put("title", tasks.getTitle());
+            obj.put("place", tasks.getPlace().getPlaceName());
+            obj.put("taskstatus", tasks.getTaskStatus().getTaskStatusID());
+            obj.put("details", tasks.getDetails());
+            obj.put("attachment", tasks.getAttachment());
+            arr.put(obj);          
+            obj = new JSONObject();           
+        }
+        return arr.toString();
+    }
 }

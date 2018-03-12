@@ -45,11 +45,11 @@ public class LoginServlet extends HttpServlet {
                 response.addCookie(secret);
                 response.sendRedirect("mainpage.html");           
             }else {
-                response.sendRedirect("http://10.114.32.70:8080/sokoshotel/?dc=wrong");
+                response.sendRedirect("http://10.114.32.74:8080/sokoshotel/?dc=wrong");
             }
             
         } else {
-            response.sendRedirect("http://10.114.32.70:8080/sokoshotel/?dc=wrong");
+            response.sendRedirect("http://10.114.32.74:8080/sokoshotel/?dc=wrong");
         }
     }
 } 

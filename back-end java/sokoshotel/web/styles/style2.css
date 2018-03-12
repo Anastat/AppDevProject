@@ -10,6 +10,7 @@ body {
 
 
 /*div for the blur effect of the background-image*/
+
 .blur::before {
 	content: "";
 	background: url('https://raw.githubusercontent.com/Anastat/ApplicationDevelopmentProject/master/html/img/calendar.jpg') fixed;
@@ -29,18 +30,21 @@ body {
 	width: 100%;
 	height: 100%;
 	display: grid;
-	grid-template-areas: "nav nav nav nav" "content content content aside" "content content content aside" "content content content aside";
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas: "nav nav nav nav" "content content content aside" "content content content aside" "content content content aside" "content content content aside" "content content content aside";
 	z-index: -1;
 }
 
 nav {
+	text-align: center;
+	position: relative;
 	grid-area: nav;
 }
-
+/*style for logo image in top nav*/
 .picStyle {
-	width: 40%; 
-	height: 40%; 
+	width: 200px;
 	float: left;
+        padding-left: 10px;
 }
 
 .topnav {
@@ -52,48 +56,38 @@ nav {
 }
 
 .topnav a {
-	float: left;
-	color: black;
 	text-align: center;
 	padding: 10px 15px;
-	text-decoration: none;
 	font-size: 17px;
 }
 
-.topnav a:hover {
-	background-color: #f5f0e8;
-	color: black;
-}
-
-.topnav a.active {
-	background-color: #f5f0e8;
-	color: black;
-}
-
-a:link {
-	text-decoration: underline;
-}
-
-.logoutstyle {
-	position: absolute;
-	bottom: 0px;
-	right: 3px;
-}
-
-.icon {
-	width: 2%; 
+.topNavRight {
+	display: flex;
+	position: relative;
 	float: right;
+	padding-top: 20px;
+}
+
+#addUserBtn,
+#logout {
+	background-color: Transparent;
+	margin-right: 10px;
+	padding: 0;
+	cursor: pointer;
+	border: none;
 }
 
 .align-center {
-        padding-top: 5%;
+	position: absolute;
+	padding-top: 5%;
 	width: 100%;
 	height: 100%;
 	margin: auto;
 	grid-area: content;
 }
 
-aside .button, .align-center .button {
+aside .button,
+.align-center .button {
 	width: 200px;
 	height: 40px;
 	background-color: #f5f0e8;
@@ -105,42 +99,55 @@ aside .button, .align-center .button {
 	box-shadow: 4px 4px 5px 0px rgba(50, 50, 50, 0.75);
 	border-radius: 7px;
 }
+
+/*styles for disable aside buttons*/
+
+aside button.disabledDep {
+	box-shadow: inset -1px -1px 30px 0px #ccc;
+}
+
 /*radio buttons all, new, done etc.*/
+
 .float-right {
-    padding: 10px;
-    position: relative;
-    text-align: center;
+	padding: 10px;
+	position: relative;
+	text-align: center;
 }
 
 /*content from database, displays tasks*/
+
 .boxed {
-    position: relative;
-    border: none;
-    width: 80%;
-    height: 70%;
-    overflow: auto;
-    margin: auto;
-    cursor: pointer;
+	position: relative;
+	border: none;
+	width: 80%;
+	height: 70%;
+	overflow: auto;
+	margin: auto;
+	cursor: pointer;
+	-moz-height: 75%;
 }
+
 /*button Add new task*/
+
 .wrapper {
-    position: relative;
-    padding-top: 10px;
-    text-align: center;
+	position: relative;
+	padding-top: 10px;
+	text-align: center;
 }
 
 aside {
-	display: flex;
-	flex-direction: row;
+
 	grid-area: aside;
 	align-content: center;
-        padding-top: 20%;
+	margin: auto;
+	-moz-align-content: center;
 }
 
 aside ul {
-	
+
 	list-style: none;
 }
+
 aside ul li {
 	margin: 0 0 10% 0;
 }
@@ -192,6 +199,18 @@ aside ul li {
 	box-shadow: 0 0 5px 5px #424a4c;
 }
 
+.modal-content2 input:not(#saveButtonAdduser):not(#cancelButtonAdduser),
+select {
+	height: 25px;
+}
+
+/*add user form save and cancel buttons*/
+
+#saveButtonAdduser,
+#cancelButtonAdduser {
+	width: 45%;
+}
+
 /*position of model content depends of screen*/
 
 @media (min-width: 700px) and (max-width: 850px) {
@@ -204,11 +223,37 @@ aside ul li {
 	.modal-content {
 		margin-left: 5%;
 	}
+	nav {
+		height: 10%;
+	}
+	.content {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: 1fr 6fr;
+		grid-template-areas: "nav nav nav" "content content content";
+	}
+	.boxed {
+
+		width: 90%;
+
+	}
+	aside {
+		display: none;
+
+	}
 }
 
 @media (min-width: 0) and (max-width: 480px) {
 	.modal-content {
 		width: 100%;
 		margin: 0;
+	}
+	aside {
+		display: none;
+
+	}
+	.boxed {
+
+		width: 100%;
+
 	}
 }
