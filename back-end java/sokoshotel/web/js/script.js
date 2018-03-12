@@ -7,6 +7,7 @@ logout.addEventListener("click", function () {
     document.cookie = "username" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "supersecret" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     window.location.replace("http://10.114.32.74:8080/sokoshotel/");
+
   });
 
 

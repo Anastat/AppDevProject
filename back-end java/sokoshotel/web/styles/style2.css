@@ -8,6 +8,11 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+button.link{
+    background: none;
+    border: none;
+}
+
 
 /*div for the blur effect of the background-image*/
 
